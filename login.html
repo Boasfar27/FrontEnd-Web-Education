@@ -40,8 +40,29 @@
             </div>
 
             <!-- Pilihan Siswa / Guru -->
-            <form action="#" method="POST">
-    
+            <form id="loginForm">
+                <div class="mb-6 text-center">
+                    <label class="block text-black font-semibold">Login Sebagai</label>
+                    <div class="flex justify-center mb-4">
+                        <!-- Icon Siswa -->
+                        <div class="cursor-pointer mx-6" id="siswaOption" onclick="setRole('siswa')">
+                            <i class="fas fa-user-graduate text-4xl text-blue-500"></i> <!-- Ikon Siswa -->
+                            <p class="text-sm mt-2">Siswa</p>
+                        </div>
+                        <!-- Icon Guru -->
+                        <div class="cursor-pointer mx-6" id="guruOption" onclick="setRole('guru')">
+                            <i class="fas fa-chalkboard-teacher text-4xl text-green-500"></i> <!-- Ikon Guru -->
+                            <p class="text-sm mt-2">Guru</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Checkbox untuk memilih Siswa/Guru -->
+                <div id="roleCheckbox" class="hidden mt-4 text-center">
+                    <input type="checkbox" id="roleSelected" disabled class="mr-2">
+                    <span id="roleText" class="text-lg"></span>
+                </div>
+
                 <!-- Email -->
                 <div class="mb-4">
                     <label for="email" class="block text-black">Email</label>
@@ -63,13 +84,10 @@
 
                 <!-- Submit Button -->
                 <div class="text-center">
-                    <a href="home.html">
-                        <button type="button" class="w-full bg-blue-500 text-white py-3 rounded-lg text-lg font-semibold hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">
-                            Login
-                        </button>
-                    </a>
+                    <button type="submit" id="loginButton" class="w-full bg-blue-500 text-white py-3 rounded-lg text-lg font-semibold hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300" disabled>
+                        Login
+                    </button>
                 </div>
-                
             </form>
 
             <!-- Link ke Register -->
@@ -91,6 +109,46 @@
 
             // Ubah ikon eye
             this.classList.toggle("fa-eye-slash");
+        });
+
+        let selectedRole = '';
+
+        // Fungsi untuk mengubah status pilihan Siswa/Guru
+        function setRole(role) {
+            selectedRole = role;
+
+            // Menampilkan checkbox setelah memilih peran
+            const roleText = document.getElementById('roleText');
+            const roleCheckbox = document.getElementById('roleCheckbox');
+            const roleSelected = document.getElementById('roleSelected');
+            
+            if (role === 'siswa') {
+                roleText.textContent = "Anda memilih sebagai Siswa";
+                roleSelected.checked = true; // Centang checkbox untuk Siswa
+            } else if (role === 'guru') {
+                roleText.textContent = "Anda memilih sebagai Guru";
+                roleSelected.checked = true; // Centang checkbox untuk Guru
+            }
+
+            // Menampilkan checkbox
+            roleCheckbox.classList.remove('hidden');
+            document.getElementById("loginButton").disabled = false; // Mengaktifkan tombol login
+        }
+
+        // Script untuk mengarahkan berdasarkan pilihan Siswa/Guru (untuk login)
+        const loginForm = document.getElementById("loginForm");
+
+        loginForm.addEventListener("submit", function (e) {
+            e.preventDefault(); // Mencegah form untuk melakukan submit default
+
+            // Mengarahkan pengguna ke halaman yang sesuai
+            if (selectedRole === "siswa") {
+                window.location.href = "dashboardSISWA.html";
+            } else if (selectedRole === "guru") {
+                window.location.href = "dashboardGURU.html";
+            } else {
+                alert("Pilih login sebagai Siswa atau Guru terlebih dahulu.");
+            }
         });
     </script>
 

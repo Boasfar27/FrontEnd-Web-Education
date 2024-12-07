@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Guru - EduPlatform</title>
+    <meta name="description" content="Dashboard untuk Guru di EduPlatform untuk mengawasi siswa dalam pembelajaran">
+
+    <!-- Link ke TailwindCSS dari CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Link ke FontAwesome untuk ikon -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
+    <!-- Link ke Chart.js untuk grafik -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="bg-gray-100 text-gray-900 font-roboto">
+
+    <div class="flex h-screen">
+        <!-- Sidebar (fixed) -->
+        <div class="w-64 bg-blue-600 text-white p-4 space-y-6 fixed h-full lg:block hidden">
+            <h1 class="text-3xl font-semibold text-center text-white mb-6">EduPlatform</h1>
+            <ul>
+                <li><a href="#siswa" class="flex items-center text-lg hover:text-blue-300 py-2"><i class="fas fa-users mr-3"></i>Daftar Siswa</a></li>
+                <li><a href="#materi" class="flex items-center text-lg hover:text-blue-300 py-2"><i class="fas fa-book mr-3"></i>Materi</a></li>
+                <li><a href="#soal" class="flex items-center text-lg hover:text-blue-300 py-2"><i class="fas fa-pencil-alt mr-3"></i>Soal</a></li>
+                <li><a href="#quiz" class="flex items-center text-lg hover:text-blue-300 py-2"><i class="fas fa-question-circle mr-3"></i>Quiz</a></li>
+                <li><a href="#aktivitas" class="flex items-center text-lg hover:text-blue-300 py-2"><i class="fas fa-chart-line mr-3"></i>Aktivitas Siswa</a></li>
+                <li><a href="#forum" class="flex items-center text-lg hover:text-blue-300 py-2"><i class="fas fa-comments mr-3"></i>Forum Diskusi</a></li>
+                <li><a href="#logout" class="flex items-center text-lg hover:text-blue-300 py-2"><i class="fas fa-sign-out-alt mr-3"></i>Logout</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content (with padding on left side to avoid overlap with sidebar) -->
+        <div class="flex-1 p-6 lg:pl-72 pl-4">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-3xl font-semibold">Selamat Datang, <span class="text-blue-600" id="guruName">[Nama Guru]</span></h2>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/40" alt="Foto Profil" class="w-10 h-10 rounded-full cursor-pointer" id="profilePic">
+                        <i class="fas fa-caret-down text-white ml-2 cursor-pointer" id="dropdownIcon"></i>
+                        <!-- Dropdown Menu -->
+                        <div class="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-lg z-10 hidden" id="dropdownMenu">
+                            <ul>
+                                <li><a href="#editProfile" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Edit Profil</a></li>
+                                <li><a href="#logout" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pengawasan Siswa -->
+            <section id="siswa" class="mb-12">
+                <h3 class="text-2xl font-semibold mb-4">Daftar Siswa</h3>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <table class="min-w-full table-auto">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="px-4 py-2">No</th>
+                                <th class="px-4 py-2">Nama Siswa</th>
+                                <th class="px-4 py-2">Kelas</th>
+                                <th class="px-4 py-2">Status Aktivitas</th>
+                                <th class="px-4 py-2">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Daftar siswa dapat ditambahkan di sini -->
+                            <tr>
+                                <td class="border px-4 py-2">1</td>
+                                <td class="border px-4 py-2">Andi Pratama</td>
+                                <td class="border px-4 py-2">Kelas 5 SD</td>
+                                <td class="border px-4 py-2 text-green-500">Aktif</td>
+                                <td class="border px-4 py-2">
+                                    <a href="#detailSiswa" class="text-blue-500 hover:underline">Lihat Detail</a>
+                                </td>
+                            </tr>
+                            <!-- Tambahkan siswa lainnya di sini -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Upload Materi -->
+            <section id="materi" class="mb-12">
+                <h3 class="text-2xl font-semibold mb-4">Upload Materi Pembelajaran</h3>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h4 class="text-xl font-medium mb-2">Upload Materi</h4>
+                    <form action="#" method="post" enctype="multipart/form-data">
+                        <div class="mb-4">
+                            <label for="materiFile" class="block text-sm font-medium text-gray-700">Pilih File Materi</label>
+                            <input type="file" id="materiFile" name="materiFile" class="mt-1 p-2 w-full border rounded-lg bg-gray-50" required>
+                        </div>
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Upload Materi</button>
+                    </form>
+                </div>
+                <h4 class="text-xl font-medium mb-2 mt-8">Materi yang Sudah Diupload</h4>
+                <table class="min-w-full table-auto bg-white p-4 rounded-lg shadow-lg">
+                    <thead>
+                        <tr class="bg-gray-100">
+                            <th class="px-4 py-2">No</th>
+                            <th class="px-4 py-2">Nama Materi</th>
+                            <th class="px-4 py-2">Status</th>
+                            <th class="px-4 py-2">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border px-4 py-2">1</td>
+                            <td class="border px-4 py-2">Materi Pelajaran Matematika</td>
+                            <td class="border px-4 py-2 text-green-500">Sudah Diupload</td>
+                            <td class="border px-4 py-2">
+                                <a href="#editMateri" class="text-blue-500 hover:underline"><i class="fas fa-edit"></i> Edit</a> | 
+                                <a href="#hapusMateri" class="text-red-500 hover:underline"><i class="fas fa-trash-alt"></i> Hapus</a>
+                            </td>
+                        </tr>
+                        <!-- Tambahkan materi lainnya di sini -->
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Upload Soal Latihan -->
+            <section id="soal" class="mb-12">
+                <h3 class="text-2xl font-semibold mb-4">Upload Soal Latihan</h3>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h4 class="text-xl font-medium mb-2">Upload Soal Latihan</h4>
+                    <form action="#" method="post" enctype="multipart/form-data">
+                        <div class="mb-4">
+                            <label for="soalFile" class="block text-sm font-medium text-gray-700">Pilih File Soal</label>
+                            <input type="file" id="soalFile" name="soalFile" class="mt-1 p-2 w-full border rounded-lg bg-gray-50" required>
+                        </div>
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Upload Soal</button>
+                    </form>
+                </div>
+                <h4 class="text-xl font-medium mb-2 mt-8">Soal yang Sudah Diupload</h4>
+                <table class="min-w-full table-auto bg-white p-4 rounded-lg shadow-lg">
+                    <thead>
+                        <tr class="bg-gray-100">
+                            <th class="px-4 py-2">No</th>
+                            <th class="px-4 py-2">Nama Soal</th>
+                            <th class="px-4 py-2">Status</th>
+                            <th class="px-4 py-2">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border px-4 py-2">1</td>
+                            <td class="border px-4 py-2">Soal Ujian Matematika</td>
+                            <td class="border px-4 py-2 text-green-500">Sudah Diupload</td>
+                            <td class="border px-4 py-2">
+                                <a href="#editSoal" class="text-blue-500 hover:underline"><i class="fas fa-edit"></i> Edit</a> | 
+                                <a href="#hapusSoal" class="text-red-500 hover:underline"><i class="fas fa-trash-alt"></i> Hapus</a>
+                            </td>
+                        </tr>
+                        <!-- Tambahkan soal lainnya di sini -->
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Upload Quiz -->
+            <section id="quiz" class="mb-12">
+                <h3 class="text-2xl font-semibold mb-4">Upload Quiz</h3>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h4 class="text-xl font-medium mb-2">Upload Quiz</h4>
+                    <form action="#" method="post" enctype="multipart/form-data">
+                        <div class="mb-4">
+                            <label for="quizFile" class="block text-sm font-medium text-gray-700">Pilih File Quiz</label>
+                            <input type="file" id="quizFile" name="quizFile" class="mt-1 p-2 w-full border rounded-lg bg-gray-50" required>
+                        </div>
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Upload Quiz</button>
+                    </form>
+                </div>
+                <h4 class="text-xl font-medium mb-2 mt-8">Quiz yang Sudah Diupload</h4>
+                <table class="min-w-full table-auto bg-white p-4 rounded-lg shadow-lg">
+                    <thead>
+                        <tr class="bg-gray-100">
+                            <th class="px-4 py-2">No</th>
+                            <th class="px-4 py-2">Nama Quiz</th>
+                            <th class="px-4 py-2">Status</th>
+                            <th class="px-4 py-2">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border px-4 py-2">1</td>
+                            <td class="border px-4 py-2">Quiz Matematika</td>
+                            <td class="border px-4 py-2 text-green-500">Sudah Diupload</td>
+                            <td class="border px-4 py-2">
+                                <a href="#editQuiz" class="text-blue-500 hover:underline"><i class="fas fa-edit"></i> Edit</a> | 
+                                <a href="#hapusQuiz" class="text-red-500 hover:underline"><i class="fas fa-trash-alt"></i> Hapus</a>
+                            </td>
+                        </tr>
+                        <!-- Tambahkan quiz lainnya di sini -->
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Aktivitas Siswa -->
+            <section id="aktivitas" class="mb-12">
+                <h3 class="text-2xl font-semibold mb-4">Aktivitas Siswa</h3>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <canvas id="studentActivityChart"></canvas>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // Toggle dropdown menu
+        const profilePic = document.getElementById('profilePic');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        const dropdownIcon = document.getElementById('dropdownIcon');
+        
+        profilePic.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('hidden');
+        });
+
+        dropdownIcon.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('hidden');
+        });
+
+        // Grafik Aktivitas Siswa
+        const ctx = document.getElementById('studentActivityChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Andi', 'Budi', 'Caca', 'Dedi', 'Eka'],
+                datasets: [{
+                    label: 'Aktivitas Siswa (Jumlah Kuis Dikerjakan)',
+                    data: [5, 10, 8, 12, 7],
+                    backgroundColor: '#4C51BF',
+                    borderColor: '#4C51BF',
+                    borderWidth: 1
+                }]
+            }
+        });
+    </script>
+
+</body>
+
+</html>
