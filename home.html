@@ -1,11 +1,243 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>EduPlatform - Platform Pembelajaran</title>
+    <meta name="description" content="Situs edukasi modern yang menyediakan informasi pendidikan, grafik statistik, dan layanan interaktif.">
+
+    <!-- Link ke TailwindCSS dari CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Link ke Slick Carousel CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+
+    <!-- Link ke Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Link ke Slick Carousel JS -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
 </head>
-<body>
-    <h1>home</h1>
+
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-4">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="text-xl font-bold">
+                <a href="#" class="flex items-center space-x-2">
+                    <img src="https://via.placeholder.com/50" alt="Logo" class="w-12 h-12">
+                    <span>EduPlatform</span>
+                </a>
+            </div>
+            <div class="space-x-4">
+                <a href="login.html" class="text-white hover:text-gray-300">Login</a>
+                <a href="register.html" class="text-white hover:text-gray-300">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto my-12 px-4">
+
+       <!-- Gambar Slider (Carousel) -->
+       <section class="mb-12">
+        <div class="slider">
+            <div>
+                <img src="https://picsum.photos/200/300?random=1" alt="SD" class="w-full h-64 object-cover rounded-lg">
+            </div>
+            <div>
+                <img src="https://picsum.photos/200/300?random=2" alt="SMP" class="w-full h-64 object-cover rounded-lg">
+            </div>
+            <div>
+                <img src="https://picsum.photos/200/300?random=3" alt="SMA" class="w-full h-64 object-cover rounded-lg">
+            </div>
+        </div>
+    </section>
+
+    <!-- Card Section: SD, SMP, SMA -->
+    <section class="grid md:grid-cols-3 gap-8 mb-12">
+        <!-- SD -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <img src="https://picsum.photos/500/300?random=1" alt="Poster SD" class="w-full h-48 object-cover">
+            <div class="p-4">
+                <h3 class="text-xl font-semibold">Pendidikan Dasar (SD)</h3>
+                <p class="text-gray-600 mt-2">Materi pembelajaran yang menyenangkan dan mudah dipahami untuk siswa SD.</p>
+            </div>
+        </div>
+    
+        <!-- SMP -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <img src="https://picsum.photos/500/300?random=2" alt="Poster SMP" class="w-full h-48 object-cover">
+            <div class="p-4">
+                <h3 class="text-xl font-semibold">Pendidikan Menengah (SMP)</h3>
+                <p class="text-gray-600 mt-2">Meningkatkan pemahaman siswa SMP dengan materi yang lebih menantang.</p>
+            </div>
+        </div>
+    
+        <!-- SMA -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <img src="https://picsum.photos/500/300?random=3" alt="Poster SMA" class="w-full h-48 object-cover">
+            <div class="p-4">
+                <h3 class="text-xl font-semibold">Pendidikan Menengah Atas (SMA)</h3>
+                <p class="text-gray-600 mt-2">Mempersiapkan siswa SMA dengan materi yang lebih kompleks dan persiapan ujian.</p>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Grafik Statistik Pendidikan -->
+    <section class="mb-12">
+        <h2 class="text-3xl font-bold text-center mb-6">Statistik Pendidikan</h2>
+        <div class="max-w-4xl mx-auto">
+            <canvas id="barChart" class="w-full h-64"></canvas>
+        </div>
+    </section>
+
+        <!-- Card Section: Bank Soal, Materi, Quiz -->
+        <section class="grid md:grid-cols-3 gap-8 mb-12">
+            <div class="bg-white shadow-lg rounded-lg p-6 text-center">
+                <img src="https://picsum.photos/200/300?random=1" alt="Bank Soal" class="w-full h-48 object-cover mx-auto mb-4 rounded-lg">
+                <h3 class="text-xl font-semibold mb-4">Bank Soal</h3>
+                <p class="text-gray-600 mb-4">Akses berbagai soal ujian untuk latihan dan persiapan ujian.</p>
+                <a href="#" class="text-blue-500 hover:underline">Lihat Soal</a>
+            </div>
+            <div class="bg-white shadow-lg rounded-lg p-6 text-center">
+                <img src="https://picsum.photos/200/300?random=2" alt="Bank Materi" class="w-full h-48 object-cover mx-auto mb-4 rounded-lg">
+                <h3 class="text-xl font-semibold mb-4">Bank Materi</h3>
+                <p class="text-gray-600 mb-4">Temukan materi pembelajaran dari berbagai sumber untuk setiap level pendidikan.</p>
+                <a href="#" class="text-blue-500 hover:underline">Lihat Materi</a>
+            </div>
+            <div class="bg-white shadow-lg rounded-lg p-6 text-center">
+                <img src="https://picsum.photos/500/300?random=3" alt="Bank Quiz" class="w-full h-48 object-cover mx-auto mb-4 rounded-lg">
+                <h3 class="text-xl font-semibold mb-4">Bank Quiz</h3>
+                <p class="text-gray-600 mb-4">Latihan dengan berbagai kuis menarik untuk menguji pengetahuan Anda.</p>
+                <a href="#" class="text-blue-500 hover:underline">Lihat Kuis</a>
+            </div>
+        </section>
+
+      
+
+        <!-- FAQ and Google Maps Section -->
+        <section class="grid md:grid-cols-2 gap-8 mb-12">
+            <!-- Google Maps -->
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <h3 class="text-xl font-semibold p-4">Lokasi Kami</h3>
+                <div class="h-64">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.123456789012!2d112.123456789012!3d-7.123456789012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a1234567890ab%3A0x1234567890abcdef!2sJl.%20Ketintang%20Baru%20XII%20No.26%2C%20RT.004%2FRW.03%2C%20Ketintang%2C%20Kec.%20Gayungan%2C%20Surabaya%2C%20Jawa%20Timur%2060231!5e0!3m2!1sen!2sid!4v1234567890123" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+            
+            
+
+            <!-- FAQ Section -->
+            <div class="bg-white shadow-lg rounded-lg p-4">
+                <h3 class="text-xl font -semibold mb-4">FAQ</h3>
+                <div class="space-y-4">
+                    <div>
+                        <button class="w-full text-left bg-gray-200 p-2 rounded-lg focus:outline-none" onclick="toggleFAQ('faq1')">Apa itu EduPlatform?</button>
+                        <div id="faq1" class="hidden p-2">
+                            <p>EduPlatform adalah platform pembelajaran yang menyediakan berbagai materi, soal, dan kuis untuk membantu siswa dan guru.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="w-full text-left bg-gray-200 p-2 rounded-lg focus:outline-none" onclick="toggleFAQ('faq2')">Bagaimana cara mendaftar?</button>
+                        <div id="faq2" class="hidden p-2">
+                            <p>Anda dapat mendaftar dengan mengklik tombol 'Daftar Sekarang' di halaman utama dan mengisi formulir pendaftaran.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="w-full text-left bg-gray-200 p-2 rounded-lg focus:outline-none" onclick="toggleFAQ('faq3')">Apakah ada biaya untuk menggunakan EduPlatform?</button>
+                        <div id="faq3" class="hidden p-2">
+                            <p>EduPlatform menyediakan akses gratis ke berbagai materi dan kuis, namun beberapa fitur premium mungkin memerlukan biaya.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 EduPlatform. Semua hak dilindungi.</p>
+            <div class="space-x-4 mt-4">
+                <a href="#" class="text-white hover:text-gray-400">Tentang Kami</a>
+                <a href="#" class="text-white hover:text-gray-400">Kebijakan Privasi</a>
+                <a href="#" class="text-white hover:text-gray-400">Kontak</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script untuk Chart.js -->
+    <script>
+        // Data untuk grafik
+        const chartData = {
+            labels: ["2018", "2019", "2020", "2021", "2022"],
+            datasets: [
+                {
+                    label: "Jumlah Siswa (Juta)",
+                    data: [50, 55, 60, 65, 70],
+                    backgroundColor: "#4caf50",
+                },
+                {
+                    label: "Jumlah Guru (Juta)",
+                    data: [2, 2.5, 3, 3.5, 4],
+                    backgroundColor: "#2196f3",
+                },
+            ],
+        };
+
+        const chartOptions = {
+            responsive: true,
+            scales: {
+                x: {
+                    beginAtZero: true,
+                },
+                y: {
+                    beginAtZero: true,
+                },
+            },
+        };
+
+        // Inisialisasi grafik
+        const ctx = document.getElementById("barChart").getContext("2d");
+        new Chart(ctx, {
+            type: "bar",
+            data: chartData,
+            options: chartOptions,
+        });
+    </script>
+
+    <!-- Script untuk Slick Carousel -->
+    <script>
+        $(document).ready(function(){
+            $('.slider').slick({
+                autoplay: true,
+                autoplaySpeed: 3000,
+                dots: true,
+                arrows: false,
+                infinite: true,
+                fade: true,
+                speed: 1500
+            });
+        });
+    </script>
+
+    <!-- Script untuk FAQ Toggle -->
+    <script>
+        function toggleFAQ(faqId) {
+            const faqElement = document.getElementById(faqId);
+            faqElement.classList.toggle('hidden');
+        }
+    </script>
+
 </body>
+
 </html>

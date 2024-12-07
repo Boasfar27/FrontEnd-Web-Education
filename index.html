@@ -21,22 +21,6 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 
-    <!-- Google Maps API -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" async defer></script>
-
-    <script>
-        function initMap() {
-            var location = { lat: -7.2916, lng: 112.7341 };  // Koordinat Ketintang Baru
-            var map = new google.maps.Map(document.getElementById("google-map"), {
-                zoom: 15,
-                center: location,
-            });
-            var marker = new google.maps.Marker({
-                position: location,
-                map: map,
-            });
-        }
-    </script>
 </head>
 
 <body class="bg-gray-50 text-gray-800">
@@ -52,7 +36,7 @@
             </div>
             <div class="space-x-4">
                 <a href="login.html" class="text-white hover:text-gray-300">Login</a>
-                <a href="#register" class="text-white hover:text-gray-300">Register</a>
+                <a href="register.html" class="text-white hover:text-gray-300">Register</a>
             </div>
         </div>
     </header>
@@ -79,29 +63,32 @@
         <section class="grid md:grid-cols-3 gap-8 mb-12">
             <!-- SD -->
             <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-                <img src="https://via.placeholder.com/400x200" alt="Poster SD" class="w-full h-48 object-cover">
+                <img src="https://picsum.photos/500/300?random=1" alt="Poster SD" class="w-full h-48 object-cover">
                 <div class="p-4">
                     <h3 class="text-xl font-semibold">Pendidikan Dasar (SD)</h3>
                     <p class="text-gray-600 mt-2">Materi pembelajaran yang menyenangkan dan mudah dipahami untuk siswa SD.</p>
                 </div>
             </div>
+        
             <!-- SMP -->
             <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-                <img src="https://via.placeholder.com/400x200" alt="Poster SMP" class="w-full h-48 object-cover">
+                <img src="https://picsum.photos/500/300?random=2" alt="Poster SMP" class="w-full h-48 object-cover">
                 <div class="p-4">
                     <h3 class="text-xl font-semibold">Pendidikan Menengah (SMP)</h3>
                     <p class="text-gray-600 mt-2">Meningkatkan pemahaman siswa SMP dengan materi yang lebih menantang.</p>
                 </div>
             </div>
+        
             <!-- SMA -->
             <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-                <img src="https://via.placeholder.com/400x200" alt="Poster SMA" class="w-full h-48 object-cover">
+                <img src="https://picsum.photos/500/300?random=3" alt="Poster SMA" class="w-full h-48 object-cover">
                 <div class="p-4">
                     <h3 class="text-xl font-semibold">Pendidikan Menengah Atas (SMA)</h3>
                     <p class="text-gray-600 mt-2">Mempersiapkan siswa SMA dengan materi yang lebih kompleks dan persiapan ujian.</p>
                 </div>
             </div>
         </section>
+        
 
         <!-- Grafik Statistik Pendidikan -->
         <section class="mb-12">
@@ -110,6 +97,33 @@
                 <canvas id="barChart" class="w-full h-64"></canvas>
             </div>
         </section>
+
+        <!-- Card Section: Bank Soal, Materi, Quiz -->
+        <section class="grid md:grid-cols-3 gap-8 mb-12">
+            <!-- Bank Soal -->
+            <div class="bg-white shadow-lg rounded-lg p-6 text-center">
+                <img src="https://picsum.photos/200/300?random=1" alt="Bank Soal" class="w-full h-48 object-cover mx-auto mb-4 rounded-lg">
+                <h3 class="text-xl font-semibold mb-4">Bank Soal</h3>
+                <p class="text-gray-600 mb-4">Akses berbagai soal ujian untuk latihan dan persiapan ujian.</p>
+            </div>
+        
+            <!-- Bank Materi -->
+            <div class="bg-white shadow-lg rounded-lg p-6 text-center">
+                <img src="https://picsum.photos/200/300?random=2" alt="Bank Materi" class="w-full h-48 object-cover mx-auto mb-4 rounded-lg">
+                <h3 class="text-xl font-semibold mb-4">Bank Materi</h3>
+                <p class="text-gray-600 mb-4">Temukan materi pembelajaran dari berbagai sumber untuk setiap level pendidikan.</p>
+            </div>
+        
+            <!-- Bank Quiz -->
+            <div class="bg-white shadow-lg rounded-lg p-6 text-center">
+                <img src="https://picsum.photos/500/300?random=3" alt="Bank Quiz" class="w-full h-48 object-cover mx-auto mb-4 rounded-lg">
+                <h3 class="text-xl font-semibold mb-4">Bank Quiz</h3>
+                <p class="text-gray-600 mb-4">Latihan dengan berbagai kuis menarik untuk menguji pengetahuan Anda.</p>
+            </div>
+        </section>
+        
+        
+
         <!-- Promosi: Ajak Siswa dan Guru -->
         <section class="bg-gradient-to-r from-green-500 to-blue-500 text-white py-12 px-6 text-center rounded-lg mb-12">
             <h2 class="text-3xl font-bold mb-4">Bergabung dengan EduPlatform!</h2>
@@ -118,44 +132,44 @@
             <a href="register.html" class="bg-white text-blue-500 py-2 px-6 rounded-lg text-lg font-semibold hover:bg-gray-100">Daftar Sekarang</a>
         </section>
 
-        <!-- FAQ Section -->
-        <section class="flex justify-between gap-8 mb-12">
-            <!-- FAQ List (Left) -->
-            <div class="w-1/2">
-                <h2 class="text-2xl font-semibold mb-4">FAQ (Pertanyaan yang Sering Diajukan)</h2>
+        <!-- FAQ and Google Maps Section -->
+        <section class="grid md:grid-cols-2 gap-8 mb-12">
+            <!-- Google Maps -->
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <h3 class="text-xl font-semibold p-4">Lokasi Kami</h3>
+                <div class="h-64">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.123456789012!2d112.123456789012!3d-7.123456789012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a1234567890ab%3A0x1234567890abcdef!2sJl.%20Ketintang%20Baru%20XII%20No.26%2C%20RT.004%2FRW.03%2C%20Ketintang%2C%20Kec.%20Gayungan%2C%20Surabaya%2C%20Jawa%20Timur%2060231!5e0!3m2!1sen!2sid!4v1234567890123" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+            
+            
+
+            <!-- FAQ Section -->
+            <div class="bg-white shadow-lg rounded-lg p-4">
+                <h3 class="text-xl font -semibold mb-4">FAQ</h3>
                 <div class="space-y-4">
-                    <!-- FAQ Item 1 -->
-                    <div class="bg-white shadow-lg rounded-lg p-4">
-                        <button class="w-full text-left font-semibold" onclick="toggleFAQ(1)">Apa itu EduPlatform?</button>
-                        <div id="faq1" class="hidden mt-2 text-gray-600">
-                            <p>EduPlatform adalah platform pembelajaran yang menyediakan berbagai fitur untuk siswa dan guru.</p>
+                    <div>
+                        <button class="w-full text-left bg-gray-200 p-2 rounded-lg focus:outline-none" onclick="toggleFAQ('faq1')">Apa itu EduPlatform?</button>
+                        <div id="faq1" class="hidden p-2">
+                            <p>EduPlatform adalah platform pembelajaran yang menyediakan berbagai materi, soal, dan kuis untuk membantu siswa dan guru.</p>
                         </div>
                     </div>
-                    <!-- FAQ Item 2 -->
-                    <div class="bg-white shadow-lg rounded-lg p-4">
-                        <button class="w-full text-left font-semibold" onclick="toggleFAQ(2)">Bagaimana cara mendaftar?</button>
-                        <div id="faq2" class="hidden mt-2 text-gray-600">
-                            <p>Anda dapat mendaftar melalui halaman register yang tersedia di website ini.</p>
+                    <div>
+                        <button class="w-full text-left bg-gray-200 p-2 rounded-lg focus:outline-none" onclick="toggleFAQ('faq2')">Bagaimana cara mendaftar?</button>
+                        <div id="faq2" class="hidden p-2">
+                            <p>Anda dapat mendaftar dengan mengklik tombol 'Daftar Sekarang' di halaman utama dan mengisi formulir pendaftaran.</p>
                         </div>
                     </div>
-                    <!-- FAQ Item 3 -->
-                    <div class="bg-white shadow-lg rounded-lg p-4">
-                        <button class="w-full text-left font-semibold" onclick="toggleFAQ(3)">Apakah ada biaya untuk menggunakan platform?</button>
-                        <div id="faq3" class="hidden mt-2 text-gray-600">
-                            <p>Platform ini dapat digunakan secara gratis untuk siswa dan guru.</p>
+                    <div>
+                        <button class="w-full text-left bg-gray-200 p-2 rounded-lg focus:outline-none" onclick="toggleFAQ('faq3')">Apakah ada biaya untuk menggunakan EduPlatform?</button>
+                        <div id="faq3" class="hidden p-2">
+                            <p>EduPlatform menyediakan akses gratis ke berbagai materi dan kuis, namun beberapa fitur premium mungkin memerlukan biaya.</p>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Google Maps (Right) -->
-            <div class="w-1/2">
-                <h2 class="text-2xl font-semibold mb-4">Lokasi Kami</h2>
-                <div id="google-map" class="w-full h-64 bg-gray-300 rounded-lg"></div>
-                <p class="mt-4">Alamat: Jl. Ketintang Baru XII No.26, RT.004/RW.03, Ketintang, Kec. Gayungan, Surabaya, Jawa Timur 60231</p>
-            </div>
+            
         </section>
-
 
     </main>
 
@@ -170,14 +184,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- Script untuk FAQ Toggle -->
-    <script>
-        function toggleFAQ(faqId) {
-            const faqElement = document.getElementById('faq' + faqId);
-            faqElement.classList.toggle('hidden');
-        }
-    </script>
 
     <!-- Script untuk Chart.js -->
     <script>
@@ -223,15 +229,23 @@
     <script>
         $(document).ready(function(){
             $('.slider').slick({
-                autoplay: true,  // Mengaktifkan auto slide
-                autoplaySpeed: 3000,  // Interval waktu per slide
-                dots: true,  // Menampilkan titik navigasi
-                arrows: false,  // Menonaktifkan panah navigasi
-                infinite: true,  // Infinite scroll
-                fade: true,  // Efek fade antar slide
-                speed: 1500  // Kecepatan transisi antar gambar
+                autoplay: true,
+                autoplaySpeed: 3000,
+                dots: true,
+                arrows: false,
+                infinite: true,
+                fade: true,
+                speed: 1500
             });
         });
+    </script>
+
+    <!-- Script untuk FAQ Toggle -->
+    <script>
+        function toggleFAQ(faqId) {
+            const faqElement = document.getElementById(faqId);
+            faqElement.classList.toggle('hidden');
+        }
     </script>
 
 </body>
