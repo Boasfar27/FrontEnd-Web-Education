@@ -16,21 +16,67 @@
 </head>
 
 <body class="bg-gray-50 text-gray-900 font-sans">
+    <!-- Mobile Menu Button -->
+    <button id="mobileMenuBtn" class="lg:hidden fixed top-4 left-4 z-50 bg-blue-600 text-white p-2 rounded-md">
+        <i class="fas fa-bars"></i>
+    </button>
 
     <div class="flex h-screen">
-        <!-- Sidebar (fixed) -->
-        <div class="w-64 bg-blue-600 text-white p-4 space-y-6 fixed h-full">
-            <h1 class="text-3xl font-semibold text-center mb-6">
-                <a href="dashboardSISWA.html" class="text-white hover:text-blue-300">EduPlatform</a>
-            </h1>
-            
-            <ul>
-                <li><a href="#kelas" class="flex items-center text-lg hover:text-blue-300 py-2"><i class="fas fa-chalkboard-teacher mr-3"></i>Kelas</a></li>
-                <li><a href="#tugas" class="flex items-center text-lg hover:text-blue-300 py-2"><i class="fas fa-tasks mr-3"></i>Tugas</a></li>
-                <li><a href="#pengumuman" class="flex items-center text-lg hover:text-blue-300 py-2"><i class="fas fa-bullhorn mr-3"></i>Pengumuman</a></li>
-                <li><a href="#forum" class="flex items-center text-lg hover:text-blue-300 py-2"><i class="fas fa-comments mr-3"></i>Forum Diskusi</a></li>
-                <li><a href="#logout" class="flex items-center text-lg hover:text-blue-300 py-2"><i class="fas fa-sign-out-alt mr-3"></i>Logout</a></li>
-            </ul>
+        <!-- Overlay untuk mobile -->
+        <div id="overlay" class="fixed inset-0 bg-black opacity-50 hidden z-30 lg:hidden"></div>
+
+        <!-- Sidebar -->
+        <div id="sidebar" class="bg-blue-600 text-white flex flex-col justify-between fixed h-full transition-all duration-300 ease-in-out transform -translate-x-full lg:translate-x-0 z-40" style="width: 256px;">
+            <!-- Desktop Toggle Button -->
+            <button id="sidebarToggle" class="hidden lg:block absolute -right-4 top-4 bg-blue-600 text-white p-2 rounded-full shadow-lg z-50">
+                <i class="fas fa-chevron-left transition-transform duration-300" id="toggleIcon"></i>
+            </button>
+
+            <!-- Header -->
+            <div class="p-4">
+                <h1 class="text-3xl font-semibold text-center mb-6 sidebar-text">
+                    <a href="dashboardSISWA.html" class="text-white hover:text-blue-300">EduPlatform</a>
+                </h1>
+                <!-- Menu Utama -->
+                <ul>
+                    <li>
+                        <a href="manajemenkelasSD.html" class="flex items-center text-lg hover:text-blue-300 py-2">
+                            <i class="fas fa-chalkboard-teacher w-8"></i>
+                            <span class="sidebar-text ml-3">Kelas</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#tugas" class="flex items-center text-lg hover:text-blue-300 py-2">
+                            <i class="fas fa-tasks w-8"></i>
+                            <span class="sidebar-text ml-3">Tugas</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#pengumuman" class="flex items-center text-lg hover:text-blue-300 py-2">
+                            <i class="fas fa-bullhorn w-8"></i>
+                            <span class="sidebar-text ml-3">Pengumuman</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#forum" class="flex items-center text-lg hover:text-blue-300 py-2">
+                            <i class="fas fa-comments w-8"></i>
+                            <span class="sidebar-text ml-3">Forum Diskusi</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Logout -->
+            <div class="p-4">
+                <ul>
+                    <li>
+                        <a href="index.html" class="flex items-center text-lg hover:text-blue-300 py-2">
+                            <i class="fas fa-sign-out-alt w-8"></i>
+                            <span class="sidebar-text ml-3">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <!-- Main Content -->
@@ -199,7 +245,71 @@
             }, 3000);
         });
     </script>
+    <!-- Script untuk Sidebar Responsive -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('mainContent');
+        const toggleIcon = document.getElementById('toggleIcon');
+        const sidebarTexts = document.querySelectorAll('.sidebar-text');
+        const overlay = document.getElementById('overlay');
+        let isExpanded = true;
+
+        // Toggle untuk Desktop
+        function toggleDesktopSidebar() {
+            isExpanded = !isExpanded;
+            
+            if (!isExpanded) {
+                sidebar.style.width = '64px';
+                mainContent.style.marginLeft = '64px';
+                toggleIcon.style.transform = 'rotate(180deg)';
+                sidebarTexts.forEach(text => text.style.display = 'none');
+            } else {
+                sidebar.style.width = '256px';
+                mainContent.style.marginLeft = '256px';
+                toggleIcon.style.transform = 'rotate(0deg)';
+                sidebarTexts.forEach(text => text.style.display = 'inline');
+            }
+        }
+
+        // Toggle untuk Mobile
+        function toggleMobileSidebar() {
+            const isHidden = sidebar.classList.contains('-translate-x-full');
+            
+            if (isHidden) {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+            }
+        }
+
+        // Event Listeners
+        document.getElementById('sidebarToggle').addEventListener('click', toggleDesktopSidebar);
+        mobileMenuBtn.addEventListener('click', toggleMobileSidebar);
+        overlay.addEventListener('click', toggleMobileSidebar);
+
+        // Handle Responsive Behavior
+        function handleResize() {
+            const isDesktop = window.innerWidth >= 1024; // lg breakpoint
+            
+            if (isDesktop) {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.add('hidden');
+                mainContent.style.marginLeft = isExpanded ? '256px' : '64px';
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                mainContent.style.marginLeft = '0';
+            }
+        }
+
+        window.addEventListener('resize', handleResize);
+        handleResize(); // Initial check
+    </script>
 
 </body>
 
 </html>
+
+

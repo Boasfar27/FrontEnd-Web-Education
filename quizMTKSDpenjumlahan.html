@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Matematika - Penjumlahan untuk SD</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body class="bg-gradient-to-br from-purple-600 to-blue-500 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="text-center mb-8">
+            <h1 class="text-5xl font-bold text-white mb-4">Quiz Matematika - Penjumlahan</h1>
+            <p class="text-2xl text-white">Uji kemampuan penjumlahanmu!</p>
+        </header>
+
+        <!-- Quiz Container -->
+        <div class="max-w-3xl mx-auto">
+            <form id="quizForm" class="space-y-6">
+                <!-- Progress Bar -->
+                <div class="w-full bg-gray-200 rounded-full h-6 mb-8">
+                    <div id="progressBar" class="w-0 h-6 bg-green-500 rounded-full transition-all duration-500"></div>
+                </div>
+
+                <!-- Question Cards -->
+                <div class="question-container">
+                    <!-- Question 1 -->
+                    <div class="question-card bg-white rounded-xl p-8 shadow-lg mb-8" data-question="1">
+                        <h3 class="text-3xl font-bold text-purple-800 mb-4">Soal 1 dari 10</h3>
+                        <p class="text-2xl text-gray-700 mb-6">Berapa 12 + 8?</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <button type="button" class="answer-btn bg-red-500 hover:bg-red-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="18">18</button>
+                            <button type="button" class="answer-btn bg-blue-500 hover:bg-blue-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="20">20</button>
+                            <button type="button" class="answer-btn bg-green-500 hover:bg-green-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="22">22</button>
+                            <button type="button" class="answer-btn bg-yellow-500 hover:bg-yellow-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="19">19</button>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="question-card bg-white rounded-xl p-8 shadow-lg mb-8 hidden" data-question="2">
+                        <h3 class="text-3xl font-bold text-purple-800 mb-4">Soal 2 dari 10</h3>
+                        <p class="text-2xl text-gray-700 mb-6">Berapa 15 + 7?</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <button type="button" class="answer-btn bg-red-500 hover:bg-red-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="21">21</button>
+                            <button type="button" class="answer-btn bg-blue-500 hover:bg-blue-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="22">22</button>
+                            <button type="button" class="answer-btn bg-green-500 hover:bg-green-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="23">23</button>
+                            <button type="button" class="answer-btn bg-yellow-500 hover:bg-yellow-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="20">20</button>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="question-card bg-white rounded-xl p-8 shadow-lg mb-8 hidden" data-question="3">
+                        <h3 class="text-3xl font-bold text-purple-800 mb-4">Soal 3 dari 10</h3>
+                        <p class="text-2xl text-gray-700 mb-6">Berapa 25 + 13?</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <button type="button" class="answer-btn bg-red-500 hover:bg-red-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="37">37</button>
+                            <button type="button" class="answer-btn bg-blue-500 hover:bg-blue-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="38">38</button>
+                            <button type="button" class="answer-btn bg-green-500 hover:bg-green-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="36">36</button>
+                            <button type="button" class="answer-btn bg-yellow-500 hover:bg-yellow-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="39">39</button>
+                        </div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="question-card bg-white rounded-xl p-8 shadow-lg mb-8 hidden" data-question="4">
+                        <h3 class="text-3xl font-bold text-purple-800 mb-4">Soal 4 dari 10</h3>
+                        <p class="text-2xl text-gray-700 mb-6">Berapa 31 + 16?</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <button type="button" class="answer-btn bg-red-500 hover:bg-red-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="48">48</button>
+                            <button type="button" class="answer-btn bg-blue-500 hover:bg-blue-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="47">47</button>
+                            <button type="button" class="answer-btn bg-green-500 hover:bg-green-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="46">46</button>
+                            <button type="button" class="answer-btn bg-yellow-500 hover:bg-yellow-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="45">45</button>
+                        </div>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div class="question-card bg-white rounded-xl p-8 shadow-lg mb-8 hidden" data-question="5">
+                        <h3 class="text-3xl font-bold text-purple-800 mb-4">Soal 5 dari 10</h3>
+                        <p class="text-2xl text-gray-700 mb-6">Berapa 42 + 19?</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <button type="button" class="answer-btn bg-red-500 hover:bg-red-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="60">60</button>
+                            <button type="button" class="answer-btn bg-blue-500 hover:bg-blue-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="61">61</button>
+                            <button type="button" class="answer-btn bg-green-500 hover:bg-green-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="62">62</button>
+                            <button type="button" class="answer-btn bg-yellow-500 hover:bg-yellow-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="59">59</button>
+                        </div>
+                    </div>
+
+                    <!-- Question 6 -->
+                    <div class="question-card bg-white rounded-xl p-8 shadow-lg mb-8 hidden" data-question="6">
+                        <h3 class="text-3xl font-bold text-purple-800 mb-4">Soal 6 dari 10</h3>
+                        <p class="text-2xl text-gray-700 mb-6">Berapa 14 + 28?</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <button type="button" class="answer-btn bg-red-500 hover:bg-red-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="42">42</button>
+                            <button type="button" class="answer-btn bg-blue-500 hover:bg-blue-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="43">43</button>
+                            <button type="button" class="answer-btn bg-green-500 hover:bg-green-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="44">44</button>
+                            <button type="button" class="answer-btn bg-yellow-500 hover:bg-yellow-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="45">45</button>
+                        </div>
+                    </div>
+
+                    <!-- Question 7 -->
+                    <div class="question-card bg-white rounded-xl p-8 shadow-lg mb-8 hidden" data-question="7">
+                        <h3 class="text-3xl font-bold text-purple-800 mb-4">Soal 7 dari 10</h3>
+                        <p class="text-2xl text-gray-700 mb-6">Berapa 18 + 24?</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <button type="button" class="answer-btn bg-red-500 hover:bg-red-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="42">42</button>
+                            <button type="button" class="answer-btn bg-blue-500 hover:bg-blue-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="43">43</button>
+                            <button type="button" class="answer-btn bg-green-500 hover:bg-green-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="44">44</button>
+                            <button type="button" class="answer-btn bg-yellow-500 hover:bg-yellow-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="45">45</button>
+                        </div>
+                    </div>
+
+                    <!-- Question 8 -->
+                    <div class="question-card bg-white rounded-xl p-8 shadow-lg mb-8 hidden" data-question="8">
+                        <h3 class="text-3xl font-bold text-purple-800 mb-4">Soal 8 dari 10</h3>
+                        <p class="text-2xl text-gray-700 mb-6">Berapa 10 + 31?</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <button type="button" class="answer-btn bg-red-500 hover:bg-red-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="41">41</button>
+                            <button type="button" class="answer-btn bg-blue-500 hover:bg-blue-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="42">42</button>
+                            <button type="button" class="answer-btn bg-green-500 hover:bg-green-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="43">43</button>
+                            <button type="button" class="answer-btn bg-yellow-500 hover:bg-yellow-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="44">44</button>
+                        </div>
+                    </div>
+
+                    <!-- Question 9 -->
+                    <div class="question-card bg-white rounded-xl p-8 shadow-lg mb-8 hidden" data-question="9">
+                        <h3 class="text-3xl font-bold text-purple-800 mb-4">Soal 9 dari 10</h3>
+                        <p class="text-2xl text-gray-700 mb-6">Berapa 20 + 25?</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <button type="button" class="answer-btn bg-red-500 hover:bg-red-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="44">44</button>
+                            <button type="button" class="answer-btn bg-blue-500 hover:bg-blue-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="45">45</button>
+                            <button type="button" class="answer-btn bg-green-500 hover:bg-green-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="46">46</button>
+                            <button type="button" class="answer-btn bg-yellow-500 hover:bg-yellow-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="47">47</button>
+                        </div>
+                    </div>
+
+                    <!-- Question 10 -->
+                    <div class="question-card bg-white rounded-xl p-8 shadow-lg mb-8 hidden" data-question="10">
+                        <h3 class="text-3xl font-bold text-purple-800 mb-4">Soal 10 dari 10</h3>
+                        <p class="text-2xl text-gray-700 mb-6">Berapa 30 + 45?</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <button type="button" class="answer-btn bg-red-500 hover:bg-red-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="75">75</button>
+                            <button type="button" class="answer-btn bg-blue-500 hover:bg-blue-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="76">76</button>
+                            <button type="button" class="answer-btn bg-green-500 hover:bg-green-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="77">77</button>
+                            <button type="button" class="answer-btn bg-yellow-500 hover:bg-yellow-600 text-white p-6 rounded-lg text-xl font-semibold" data-value="78">78</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            1: "20",
+            2: "22",
+            3: "38",
+            4: "47",
+            5: "61",
+            6: "42",
+            7: "42",
+            8: "41",
+            9: "45",
+            10: "75"
+        };
+
+        let currentQuestion = 1;
+        let score = 0;
+        let answers = {};
+
+        // Initialize progress bar
+        const progressBar = document.getElementById('progressBar');
+        updateProgress();
+
+        // Add click handlers to all answer buttons
+        document.querySelectorAll('.answer-btn').forEach(button => {
+            button.addEventListener('click', handleAnswer);
+        });
+
+        function handleAnswer(event) {
+            const button = event.target;
+            const answer = button.dataset.value;
+            const question = button.closest('.question-card').dataset.question;
+            
+            answers[question] = answer;
+            
+            // Check if correct
+            if (answer === correctAnswers[question]) {
+                score++;
+            }
+
+            // Disable all buttons in current question
+            const currentButtons = button.closest('.question-card').querySelectorAll('.answer-btn');
+            currentButtons.forEach(btn => {
+                btn.disabled = true;
+                if (btn.dataset.value === correctAnswers[question]) {
+                    btn.classList.add('bg-green-600');
+                } else {
+                    btn.classList.add('bg-gray-400');
+                }
+            });
+
+            // Show correct/incorrect feedback
+            setTimeout(() => {
+                if (currentQuestion < 10) {
+                    currentQuestion++;
+                    showNextQuestion();
+                } else {
+                    showFinalResults();
+                }
+            }, 1000);
+        }
+
+        function showNextQuestion() {
+            // Hide current question
+            document.querySelector(`[data-question="${currentQuestion - 1}"]`).classList.add('hidden');
+            
+            // Show next question
+            document.querySelector(`[data-question="${currentQuestion}"]`).classList.remove('hidden');
+            
+            // Update progress
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestion - 1) / 10) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        function showFinalResults() {
+            const percentage = (score / 10) * 100;
+            let message, icon;
+
+            if (percentage === 100) {
+                message = "Sempurna! Kamu luar biasa! 🌟";
+                icon = 'success';
+            } else if (percentage >= 80) {
+                message = "Kerja bagus! Teruskan! 🎉";
+                icon = 'success';
+            } else if (percentage >= 60) {
+                message = "Usaha yang bagus! Latihan membuat sempurna! 💪";
+                icon = 'info';
+            } else {
+                message = "Terus latihan! Kamu bisa lebih baik lagi! 📚";
+                icon = 'info';
+            }
+
+            Swal.fire({
+                title: `Quiz Selesai!`,
+                html: `
+                    <div class="text-xl mb-4">Skormu: ${score}/10 (${percentage}%)</div>
+                    <div class="text-lg">${message}</div>
+                `,
+                icon: icon,
+                confirmButtonText: 'Kemabali Ke Materi',
+                allowOutsideClick: false
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Reset quiz jika diperlukan
+                    resetQuiz();
+            
+                    // Redirect ke halaman materi setelah selesai
+                    window.location.href = 'materiMTKSD.html';
+                }
+            });
+            
+        }
+
+        function resetQuiz() {
+            currentQuestion = 1;
+            score = 0;
+            answers = {};
+            
+            // Reset all questions
+            document.querySelectorAll('.question-card').forEach(card => {
+                card.classList.add('hidden');
+            });
+            
+            // Show first question
+            document.querySelector('[data-question="1"]').classList.remove('hidden');
+            
+            // Reset buttons
+            document.querySelectorAll('.answer-btn').forEach(button => {
+                button.disabled = false;
+                button.classList.remove('bg-green-600', 'bg-gray-400');
+            });
+            
+            // Reset progress
+            updateProgress();
+        }
+    </script>
+</body>
+
+</html>
