@@ -11,8 +11,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Link ke FontAwesome untuk ikon -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
 </head>
 
 <body class="bg-gray-50 text-gray-900 font-sans">
@@ -80,9 +80,10 @@
         </div>
 
         <!-- Main Content -->
-        <div class="flex-1 p-6 lg:pl-72 pl-4">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-3xl font-semibold">Selamat Datang, <span class="text-blue-600" id="username">[Username]</span></h2>
+        <div id="mainContent" class="flex-1 p-4 lg:p-6 transition-all duration-300 ease-in-out w-full lg:ml-64">
+            <!-- Welcome Header -->
+            <div class="flex flex-col lg:flex-row justify-between items-center mb-6 mt-12 lg:mt-0">
+                <h2 class="text-2xl lg:text-3xl font-semibold mb-4 lg:mb-0">Selamat Datang, <span class="text-blue-600" id="username">[Username]</span></h2>
                 <div class="flex items-center space-x-4">
                     <div class="relative">
                         <img src="https://via.placeholder.com/40" alt="Foto Profil" class="w-10 h-10 rounded-full cursor-pointer" id="profilePic">
@@ -91,160 +92,160 @@
             </div>
 
             <!-- Kelas Section -->
-            <section id="kelas" class="mb-12">
-                <div class="flex justify-between items-center">
-                    <h3 class="text-2xl font-semibold mb-4">Kelas Saya</h3>
-                    <button id="joinClassBtn" class="flex items-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
-                        <i class="fas fa-plus mr-2"></i>Bergabung Kelas
-                    </button>
-                </div>
-            
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                    <!-- Matematika Dasar -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-calculator text-3xl text-green-600 mr-3"></i>
-                            <h4 class="text-xl font-medium">Matematika Dasar</h4>
-                        </div>
-                        <p class="text-gray-600 mb-4">Pelajari dasar-dasar Matematika seperti Penjumlahan, Pengurangan, Perkalian, dan Pembagian untuk kelas SD.</p>
-                        <a href="materiMTKSD.html" class="text-blue-500 hover:underline">Masuk ke Kelas</a>
-                    </div>
-            
-                    <!-- Bahasa Indonesia -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-book-reader text-3xl text-red-600 mr-3"></i>
-                            <h4 class="text-xl font-medium">Bahasa Indonesia</h4>
-                        </div>
-                        <p class="text-gray-600 mb-4">Belajar membaca, menulis, dan memahami Bahasa Indonesia dengan baik untuk tingkat SD.</p>
-                        <a href="#" class="text-blue-500 hover:underline">Masuk ke Kelas</a>
-                    </div>
-            
-                    <!-- Ilmu Pengetahuan Alam (IPA) -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-leaf text-3xl text-teal-600 mr-3"></i>
-                            <h4 class="text-xl font-medium">Ilmu Pengetahuan Alam (IPA)</h4>
-                        </div>
-                        <p class="text-gray-600 mb-4">Mengenal berbagai konsep IPA, mulai dari tumbuhan, hewan, hingga fenomena alam di sekitar kita.</p>
-                        <a href="#" class="text-blue-500 hover:underline">Masuk ke Kelas</a>
-                    </div>
-            
-                    <!-- Pendidikan Pancasila -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-hand-holding-heart text-3xl text-orange-600 mr-3"></i>
-                            <h4 class="text-xl font-medium">Pendidikan Pancasila</h4>
-                        </div>
-                        <p class="text-gray-600 mb-4">Mempelajari nilai-nilai luhur dalam Pancasila serta penerapannya dalam kehidupan sehari-hari di Indonesia.</p>
-                        <a href="#" class="text-blue-500 hover:underline">Masuk ke Kelas</a>
-                    </div>
-            
-                    <!-- Seni Budaya -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-palette text-3xl text-purple-600 mr-3"></i>
-                            <h4 class="text-xl font-medium">Seni Budaya</h4>
-                        </div>
-                        <p class="text-gray-600 mb-4">Menikmati seni dan budaya Indonesia melalui seni lukis, tari, musik, dan teater untuk SD.</p>
-                        <a href="#" class="text-blue-500 hover:underline">Masuk ke Kelas</a>
-                    </div>
-            
-                    <!-- Pendidikan Jasmani -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-futbol text-3xl text-yellow-600 mr-3"></i>
-                            <h4 class="text-xl font-medium">Pendidikan Jasmani</h4>
-                        </div>
-                        <p class="text-gray-600 mb-4">Berlatih olahraga, permainan, dan menjaga kesehatan tubuh melalui kegiatan fisik yang menyenangkan.</p>
-                        <a href="#" class="text-blue-500 hover:underline">Masuk ke Kelas</a>
-                    </div>
-            
-                    <!-- IPS (Ilmu Pengetahuan Sosial) -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-globe-americas text-3xl text-blue-700 mr-3"></i>
-                            <h4 class="text-xl font-medium">Ilmu Pengetahuan Sosial (IPS)</h4>
-                        </div>
-                        <p class="text-gray-600 mb-4">Belajar tentang sejarah, geografi, ekonomi, dan budaya Indonesia serta dunia.</p>
-                        <a href="#" class="text-blue-500 hover:underline">Masuk ke Kelas</a>
-                    </div>
-            
-                    <!-- Agama -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-praying-hands text-3xl text-indigo-600 mr-3"></i>
-                            <h4 class="text-xl font-medium">Agama</h4>
-                        </div>
-                        <p class="text-gray-600 mb-4">Mempelajari ajaran agama dengan cara yang menyenangkan dan sesuai dengan nilai-nilai agama masing-masing.</p>
-                        <a href="#" class="text-blue-500 hover:underline">Masuk ke Kelas</a>
-                    </div>
-            
-                    <!-- Bahasa Inggris -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-language text-3xl text-blue-600 mr-3"></i>
-                            <h4 class="text-xl font-medium">Bahasa Inggris</h4>
-                        </div>
-                        <p class="text-gray-600 mb-4">Belajar kosakata, grammar, dan percakapan Bahasa Inggris dasar untuk SD.</p>
-                        <a href="#" class="text-blue-500 hover:underline">Masuk ke Kelas</a>
-                    </div>
-                </div>
-            </section>
-            
-            
+<section id="kelas" class="mb-12">
+    <div class="flex justify-between items-center">
+        <h3 class="text-2xl font-semibold mb-4">Kelas Saya</h3>
+        <button id="joinClassBtn" class="flex items-center bg-blue-600 text-white px-4 py-2 my-4     rounded-lg hover:bg-blue-700">
+            <i class="fas fa-plus mr-2"></i>Bergabung Kelas
+        </button>
+        
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <!-- Matematika Dasar -->
+        <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
+            <div class="flex items-center mb-4">
+                <i class="fas fa-calculator text-3xl text-green-600 mr-3"></i>
+                <h4 class="text-xl font-medium">Matematika Dasar</h4>
+            </div>
+            <p class="text-gray-600 mb-4">Pelajari dasar-dasar Matematika seperti Penjumlahan, Pengurangan, Perkalian, dan Pembagian untuk kelas SD.</p>
+            <a href="materiMTKSD.html" class="text-blue-500 hover:underline">Masuk ke Kelas</a>
+        </div>
+
+        <!-- Bahasa Indonesia -->
+        <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
+            <div class="flex items-center mb-4">
+                <i class="fas fa-book-reader text-3xl text-red-600 mr-3"></i>
+                <h4 class="text-xl font-medium">Bahasa Indonesia</h4>
+            </div>
+            <p class="text-gray-600 mb-4">Belajar membaca, menulis, dan memahami Bahasa Indonesia dengan baik untuk tingkat SD.</p>
+            <a href="#" class="text-blue-500 hover:underline">Masuk ke Kelas</a>
+        </div>
+
+        <!-- Ilmu Pengetahuan Alam (IPA) -->
+        <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
+            <div class="flex items-center mb-4">
+                <i class="fas fa-leaf text-3xl text-teal-600 mr-3"></i>
+                <h4 class="text-xl font-medium">Ilmu Pengetahuan Alam (IPA)</h4>
+            </div>
+            <p class="text-gray-600 mb-4">Mengenal berbagai konsep IPA, mulai dari tumbuhan, hewan, hingga fenomena alam di sekitar kita.</p>
+            <a href="#" class="text-blue-500 hover:underline">Masuk ke Kelas</a>
+        </div>
+
+        <!-- Pendidikan Pancasila -->
+        <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
+            <div class="flex items-center mb-4">
+                <i class="fas fa-hand-holding-heart text-3xl text-orange-600 mr-3"></i>
+                <h4 class="text-xl font-medium">Pendidikan Pancasila</h4>
+            </div>
+            <p class="text-gray-600 mb-4">Mempelajari nilai-nilai luhur dalam Pancasila serta penerapannya dalam kehidupan sehari-hari di Indonesia.</p>
+            <a href="#" class="text-blue-500 hover:underline">Masuk ke Kelas</a>
+        </div>
+
+        <!-- Seni Budaya -->
+        <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
+            <div class="flex items-center mb-4">
+                <i class="fas fa-palette text-3xl text-purple-600 mr-3"></i>
+                <h4 class="text-xl font-medium">Seni Budaya</h4>
+            </div>
+            <p class="text-gray-600 mb-4">Menikmati seni dan budaya Indonesia melalui seni lukis, tari, musik, dan teater untuk SD.</p>
+            <a href="#" class="text-blue-500 hover:underline">Masuk ke Kelas</a>
+        </div>
+
+        <!-- Pendidikan Jasmani -->
+        <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
+            <div class="flex items-center mb-4">
+                <i class="fas fa-futbol text-3xl text-yellow-600 mr-3"></i>
+                <h4 class="text-xl font-medium">Pendidikan Jasmani</h4>
+            </div>
+            <p class="text-gray-600 mb-4">Berlatih olahraga, permainan, dan menjaga kesehatan tubuh melalui kegiatan fisik yang menyenangkan.</p>
+            <a href="#" class="text-blue-500 hover:underline">Masuk ke Kelas</a>
+        </div>
+
+        <!-- IPS (Ilmu Pengetahuan Sosial) -->
+        <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
+            <div class="flex items-center mb-4">
+                <i class="fas fa-globe-americas text-3xl text-blue-700 mr-3"></i>
+                <h4 class="text-xl font-medium">Ilmu Pengetahuan Sosial (IPS)</h4>
+            </div>
+            <p class="text-gray-600 mb-4">Belajar tentang sejarah, geografi, ekonomi, dan budaya Indonesia serta dunia.</p>
+            <a href="#" class="text-blue-500 hover:underline">Masuk ke Kelas</a>
+        </div>
+
+        <!-- Agama -->
+        <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
+            <div class="flex items-center mb-4">
+                <i class="fas fa-praying-hands text-3xl text-indigo-600 mr-3"></i>
+                <h4 class="text-xl font-medium">Agama</h4>
+            </div>
+            <p class="text-gray-600 mb-4">Mempelajari ajaran agama dengan cara yang menyenangkan dan sesuai dengan nilai-nilai agama masing-masing.</p>
+            <a href="#" class="text-blue-500 hover:underline">Masuk ke Kelas</a>
+        </div>
+
+        <!-- Bahasa Inggris -->
+        <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
+            <div class="flex items-center mb-4">
+                <i class="fas fa-language text-3xl text-blue-600 mr-3"></i>
+                <h4 class="text-xl font-medium">Bahasa Inggris</h4>
+            </div>
+            <p class="text-gray-600 mb-4">Belajar kosakata, grammar, dan percakapan Bahasa Inggris dasar untuk SD.</p>
+            <a href="#" class="text-blue-500 hover:underline">Masuk ke Kelas</a>
         </div>
     </div>
+</section>
+</div>
+</div>
 
-    <!-- Modal Form -->
-    <div id="joinClassModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
-        <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md transform transition-all duration-300">
-            <h3 class="text-2xl font-semibold mb-4">Bergabung dengan Kelas</h3>
-            <form>
-                <label for="classCode" class="block text-gray-700 font-medium mb-2">Kode Kelas</label>
-                <input type="text" id="classCode" class="w-full border border-gray-300 rounded-lg px-4 py-2 mb-4" placeholder="Masukkan kode kelas">
-                <div class="flex justify-end space-x-4">
-                    <button type="button" id="cancelBtn" class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600">Batal</button>
-                    <button type="submit" id="submitBtn" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Bergabung</button>
-                </div>
-            </form>
-        </div>
+<!-- Modal Form -->
+<div id="joinClassModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md transform transition-all duration-300">
+        <h3 class="text-2xl font-semibold mb-4">Bergabung dengan Kelas</h3>
+        <form>
+            <label for="classCode" class="block text-gray-700 font-medium mb-2">Kode Kelas</label>
+            <input type="text" id="classCode" class="w-full border border-gray-300 rounded-lg px-4 py-2 mb-4" placeholder="Masukkan kode kelas">
+            <div class="flex justify-end space-x-4">
+                <button type="button" id="cancelBtn" class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600">Batal</button>
+                <button type="submit" id="submitBtn" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Bergabung</button>
+            </div>
+        </form>
     </div>
+</div>
 
-    <!-- Alert -->
-    <div id="successAlert" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-lg shadow-lg hidden">
-        <p><i class="fas fa-check-circle mr-2"></i>Berhasil bergabung dengan kelas!</p>
-    </div>
+<!-- Alert -->
+<div id="successAlert" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-lg shadow-lg hidden">
+    <p><i class="fas fa-check-circle mr-2"></i>Berhasil bergabung dengan kelas!</p>
+</div>
 
-    <script>
-        const joinClassBtn = document.getElementById('joinClassBtn');
-        const joinClassModal = document.getElementById('joinClassModal');
-        const cancelBtn = document.getElementById('cancelBtn');
-        const submitBtn = document.getElementById('submitBtn');
-        const successAlert = document.getElementById('successAlert');
+<script>
+    const joinClassBtn = document.getElementById('joinClassBtn');
+    const joinClassModal = document.getElementById('joinClassModal');
+    const cancelBtn = document.getElementById('cancelBtn');
+    const submitBtn = document.getElementById('submitBtn');
+    const successAlert = document.getElementById('successAlert');
 
-        // Tampilkan modal saat tombol "Bergabung Kelas" diklik
-        joinClassBtn.addEventListener('click', () => {
-            joinClassModal.classList.remove('hidden');
-        });
+    // Tampilkan modal saat tombol "Bergabung Kelas" diklik
+    joinClassBtn.addEventListener('click', () => {
+        joinClassModal.classList.remove('hidden');
+    });
 
-        // Sembunyikan modal saat tombol "Batal" diklik
-        cancelBtn.addEventListener('click', () => {
-            joinClassModal.classList.add('hidden');
-        });
+    // Sembunyikan modal saat tombol "Batal" diklik
+    cancelBtn.addEventListener('click', () => {
+        joinClassModal.classList.add('hidden');
+    });
 
-        // Tampilkan alert dan sembunyikan modal saat kelas berhasil ditambahkan
-        submitBtn.addEventListener('click', (event) => {
-            event.preventDefault();
-            joinClassModal.classList.add('hidden');
-            successAlert.classList.remove('hidden');
-            
-            // Sembunyikan alert setelah beberapa detik
-            setTimeout(() => {
-                successAlert.classList.add('hidden');
-            }, 3000);
-        });
-    </script>
+    // Tampilkan alert dan sembunyikan modal saat kelas berhasil ditambahkan
+    submitBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        joinClassModal.classList.add('hidden');
+        successAlert.classList.remove('hidden');
+        
+        // Sembunyikan alert setelah beberapa detik
+        setTimeout(() => {
+            successAlert.classList.add('hidden');
+        }, 3000);
+    });
+</script>
+
     <!-- Script untuk Sidebar Responsive -->
     <script>
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -308,8 +309,6 @@
         handleResize(); // Initial check
     </script>
 
+    
 </body>
-
 </html>
-
-
