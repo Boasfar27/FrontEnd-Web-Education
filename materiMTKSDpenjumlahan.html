@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Penjumlahan - EduPlatform</title>
+    <meta name="description" content="Pelajari Penjumlahan Matematika Dasar - EduPlatform">
+    
+    <!-- Link ke TailwindCSS dari CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Link ke Font Awesome untuk ikon -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    
+    <!-- Link ke Google Fonts (optional) -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-gray-50 text-gray-900 font-sans">
+
+    <!-- Header -->
+    <header class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-3xl font-semibold">EduPlatform</h1>
+            <a href="dashboardSISWA.html" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Kembali ke Dashboard</a>
+        </div>
+    </header>
+
+    <!-- Materi Penjumlahan -->
+    <section id="materiPenjumlahan" class="p-8">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-semibold text-center mb-6">Pelajari Penjumlahan</h2>
+
+            <!-- Video Materi -->
+            <div class="mb-6">
+                <h3 class="text-2xl font-semibold mb-4">Video Pembelajaran: Penjumlahan</h3>
+                <!-- Video YouTube -->
+                <div class="aspect-w-16 aspect-h-9 mb-4">
+                    <iframe id="video1" width="100%" height="100%" src="https://www.youtube.com/embed/7x4GT4M4GJE?si=_oyScfAas1J4YA1G" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <!-- Status Progres Menonton -->
+                <div class="flex justify-between items-center">
+                    <p class="text-gray-600">Status Penonton: <span id="videoProgress1">0%</span></p>
+                    <p class="text-gray-600">Durasi: 10 menit</p>
+                </div>
+            </div>
+
+            <!-- Kuis setelah Video -->
+            <div id="quizSection" class="mt-8 hidden">
+                <h3 class="text-2xl font-semibold mb-4">Kuis: Penjumlahan</h3>
+                <form id="quizForm" class="space-y-4">
+                    <div class="flex flex-col">
+                        <label for="question1" class="text-lg">1. 5 + 7 = ?</label>
+                        <input type="radio" id="q1a" name="q1" value="10" class="form-radio">
+                        <label for="q1a" class="text-gray-600">10</label>
+                        <input type="radio" id="q1b" name="q1" value="12" class="form-radio">
+                        <label for="q1b" class="text-gray-600">12</label>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label for="question2" class="text-lg">2. 15 + 20 = ?</label>
+                        <input type="radio" id="q2a" name="q2" value="35" class="form-radio">
+                        <label for="q2a" class="text-gray-600">35</label>
+                        <input type="radio" id="q2b" name="q2" value="30" class="form-radio">
+                        <label for="q2b" class="text-gray-600">30</label>
+                    </div>
+
+                    <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Kirim Jawaban</button>
+                </form>
+                <div id="quizResult" class="mt-4 hidden">
+                    <p id="quizScore" class="text-lg font-medium"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <script>
+        // Video Progress Tracking
+        let video1 = document.getElementById("video1");
+        let videoProgress1 = document.getElementById("videoProgress1");
+
+        // Fungsi untuk menghitung progres menonton video
+        video1.onplay = function() {
+            let progressInterval1 = setInterval(function() {
+                let progress = Math.floor((video1.currentTime / video1.duration) * 100);
+                videoProgress1.innerText = progress + "%";
+                if (progress >= 100) {
+                    clearInterval(progressInterval1);
+                    document.getElementById("quizSection").classList.remove("hidden");
+                }
+            }, 1000);
+        };
+
+        // Quiz Submission
+        document.getElementById("quizForm").onsubmit = function(e) {
+            e.preventDefault();
+            let score = 0;
+            if (document.getElementById("q1a").checked) score += 1;
+            if (document.getElementById("q2a").checked) score += 1;
+
+            document.getElementById("quizScore").innerText = `Skor Anda: ${score} dari 2`;
+            document.getElementById("quizResult").classList.remove("hidden");
+        };
+    </script>
+
+</body>
+
+</html>

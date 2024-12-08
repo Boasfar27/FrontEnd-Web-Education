@@ -60,7 +60,7 @@
         </section>
 
         <!-- Card Section: SD, SMP, SMA -->
-        <section class="grid md:grid-cols-3 gap-8 mb-12">
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             <!-- SD -->
             <div class="bg-white shadow-lg rounded-lg overflow-hidden">
                 <img src="https://picsum.photos/500/300?random=1" alt="Poster SD" class="w-full h-48 object-cover">
@@ -88,7 +88,6 @@
                 </div>
             </div>
         </section>
-        
 
         <!-- Grafik Statistik Pendidikan -->
         <section class="mb-12">
@@ -99,7 +98,7 @@
         </section>
 
         <!-- Card Section: Bank Soal, Materi, Quiz -->
-        <section class="grid md:grid-cols-3 gap-8 mb-12">
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             <div class="bg-white shadow-lg rounded-lg p-6 text-center">
                 <img src="https://picsum.photos/200/300?random=1" alt="Bank Soal" class="w-full h-48 object-cover mx-auto mb-4 rounded-lg">
                 <h3 class="text-xl font-semibold mb-4">Bank Soal</h3>
@@ -119,8 +118,6 @@
                 <a href="login.html" class="text-blue-500 hover:underline">Lihat Kuis</a>
             </div>
         </section>
-        
-        
 
         <!-- Promosi: Ajak Siswa dan Guru -->
         <section class="bg-gradient-to-r from-green-500 to-blue-500 text-white py-12 px-6 text-center rounded-lg mb-12">
@@ -131,20 +128,19 @@
         </section>
 
         <!-- FAQ and Google Maps Section -->
-        <section class="grid md:grid-cols-2 gap-8 mb-12">
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             <!-- Google Maps -->
             <div class="bg-white shadow-lg rounded-lg overflow-hidden">
                 <h3 class="text-xl font-semibold p-4">Lokasi Kami</h3>
                 <div class="h-64">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.123456789012!2d112.123456789012!3d-7.123456789012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a1234567890ab%3A0x1234567890abcdef!2sJl.%20Ketintang%20Baru%20XII%20No.26%2C%20RT.004%2FRW.03%2C%20Ketintang%2C%20Kec.%20Gayungan%2C%20Surabaya%2C%20Jawa%20Timur%2060231!5e0!3m2!1sen!2sid!4v1234567890123" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4287.113249149068!2d112.72555767535133!3d-7.316165792691886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fba7b4c23af9%3A0x5df0b33f2d35347e!2sBaseCamp%20Pasiif%20(Private%20Only)!5e1!3m2!1sid!2sid!4v1733660498252!5m2!1sid!2sid" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
-            
             
 
             <!-- FAQ Section -->
             <div class="bg-white shadow-lg rounded-lg p-4">
-                <h3 class="text-xl font -semibold mb-4">FAQ</h3>
+                <h3 class="text-xl font-semibold mb-4">FAQ</h3>
                 <div class="space-y-4">
                     <div>
                         <button class="w-full text-left bg-gray-200 p-2 rounded-lg focus:outline-none" onclick="toggleFAQ('faq1')">Apa itu EduPlatform?</button>
@@ -166,13 +162,13 @@
                     </div>
                 </div>
             </div>
-            
+
         </section>
 
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
+    <footer class="bg-gradient-to-r from-indigo-600 to-blue-800 text-white py-8">
         <div class="container mx-auto text-center">
             <p>&copy; 2024 EduPlatform. Semua hak dilindungi.</p>
             <div class="space-x-4 mt-4">
@@ -180,12 +176,41 @@
                 <a href="#" class="text-white hover:text-gray-400">Kebijakan Privasi</a>
                 <a href="#" class="text-white hover:text-gray-400">Kontak</a>
             </div>
+    
+            <div class="mt-4">
+                <a href="https://www.instagram.com" class="text-white hover:text-gray-400 mx-2" target="_blank">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+                <a href="https://wa.me/628123456789" class="text-white hover:text-gray-400 mx-2" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+    
+            <div class="mt-6">
+                <h3 class="text-xl font-semibold text-white">Kategori Kelas</h3>
+                <div class="flex justify-center space-x-6 mt-4">
+                    <!-- Kelas SD -->
+                    <a href="#" class="text-white hover:text-gray-400 flex items-center">
+                        <i class="fas fa-book-reader text-2xl mr-2"></i> Kelas SD
+                    </a>
+    
+                    <!-- Kelas SMP -->
+                    <a href="#" class="text-white hover:text-gray-400 flex items-center">
+                        <i class="fas fa-chalkboard-teacher text-2xl mr-2"></i> Kelas SMP
+                    </a>
+    
+                    <!-- Kelas SMA -->
+                    <a href="#" class="text-white hover:text-gray-400 flex items-center">
+                        <i class="fas fa-laptop-code text-2xl mr-2"></i> Kelas SMA
+                    </a>
+                </div>
+            </div>
         </div>
     </footer>
+    
 
     <!-- Script untuk Chart.js -->
     <script>
-        // Data untuk grafik
         const chartData = {
             labels: ["2018", "2019", "2020", "2021", "2022"],
             datasets: [
@@ -214,7 +239,6 @@
             },
         };
 
-        // Inisialisasi grafik
         const ctx = document.getElementById("barChart").getContext("2d");
         new Chart(ctx, {
             type: "bar",
