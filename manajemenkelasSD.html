@@ -99,307 +99,66 @@
             </div>
 
             <!-- Kelas Section -->
-<section id="kelas" class="mb-12">
-    <div class="flex justify-between items-center">
-        <h3 class="text-2xl font-semibold mb-4">Kelas Saya</h3>
-        <button id="joinClassBtn" class="flex items-center bg-blue-600 text-white px-4 py-2 my-4     rounded-lg hover:bg-blue-700">
-            <i class="fas fa-plus mr-2"></i>Bergabung Kelas
-        </button>
-        
-    </div>
+            <section id="kelas" class="mb-12">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-2xl font-semibold mb-4">Kelas Saya</h3>
+                    <button id="joinClassBtn" class="flex items-center bg-blue-600 text-white px-4 py-2 my-4 rounded-lg hover:bg-blue-700">
+                        <i class="fas fa-plus mr-2"></i>Bergabung Kelas
+                    </button>
+                </div>
+            
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    <!-- Matematika Dasar -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-calculator text-3xl text-green-600 mr-3"></i>
+                                <h4 class="text-xl font-medium">Matematika Dasar</h4>
+                            </div>
+                            <!-- Hamburger Menu with Notification Icon -->
+                            <div class="flex items-center space-x-4">
+                                <!-- Notification Icon -->
+                                <div class="relative">
+                                    <button id="notificationBtn" class="text-gray-600 focus:outline-none">
+                                        <i class="fas fa-bell text-2xl"></i>
+                                        <!-- Badge for unread notifications -->
+                                        <span id="notificationBadge" class="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full px-2">3</span>
+                                    </button>
+                                </div>
+                                <!-- Hamburger Menu -->
+                                <div class="relative">
+                                    <button class="text-gray-600 focus:outline-none" onclick="toggleMenu('menu1')">
+                                        <i class="fas fa-ellipsis-v text-2xl"></i>
+                                    </button>
+                                    <div id="menu1" class="hidden absolute right-0 bg-white shadow-lg rounded-md w-48 mt-2 z-10">
+                                        <ul class="text-sm text-gray-700">
+                                            <li>
+                                                <a href="#" class="flex items-center block px-4 py-2 hover:bg-gray-100">
+                                                    <i class="fas fa-archive text-gray-600 mr-2"></i> Arsip Kelas
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="flex items-center block px-4 py-2 hover:bg-gray-100 text-red-600">
+                                                    <i class="fas fa-trash-alt text-red-600 mr-2"></i> Hapus Kelas
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Pelajari dasar-dasar Matematika seperti Penjumlahan, Pengurangan, Perkalian, dan Pembagian untuk kelas SD.</p>
+                        <a href="kelasMTKSD.html" 
+                           class="inline-block bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 py-2 px-4 rounded-md transition-all duration-300">
+                            Masuk ke Kelas
+                        </a>
+                    </div>
+                </div>
+            </section>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <!-- Matematika Dasar -->
-        <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
-            <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center">
-                    <i class="fas fa-calculator text-3xl text-green-600 mr-3"></i>
-                    <h4 class="text-xl font-medium">Matematika Dasar</h4>
-                </div>
-                <!-- Hamburger Menu -->
-                <div class="relative">
-                    <button class="text-gray-600 focus:outline-none" onclick="toggleMenu('menu1')">
-                        <i class="fas fa-ellipsis-v text-2xl"></i>
-                    </button>
-                    <div id="menu1" class="hidden absolute right-0 bg-white shadow-lg rounded-md w-48 mt-2 z-10">
-                        <ul class="text-sm text-gray-700">
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Arsip Kelas</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 text-red-600">Hapus Kelas</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <p class="text-gray-600 mb-4">Pelajari dasar-dasar Matematika seperti Penjumlahan, Pengurangan, Perkalian, dan Pembagian untuk kelas SD.</p>
-            <a href="materiMTKSD.html" 
-   class="inline-block bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 py-2 px-4 rounded-md transition-all duration-300">
-    Masuk ke Kelas
-</a>
 
-        </div>
-    
-        <!-- Bahasa Indonesia -->
-        <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
-            <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center">
-                    <i class="fas fa-book-reader text-3xl text-red-600 mr-3"></i>
-                    <h4 class="text-xl font-medium">Bahasa Indonesia</h4>
-                </div>
-                <!-- Hamburger Menu -->
-                <div class="relative">
-                    <button class="text-gray-600 focus:outline-none" onclick="toggleMenu('menu2')">
-                        <i class="fas fa-ellipsis-v text-2xl"></i>
-                    </button>
-                    <div id="menu2" class="hidden absolute right-0 bg-white shadow-lg rounded-md w-48 mt-2 z-10">
-                        <ul class="text-sm text-gray-700">
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Arsip Kelas</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 text-red-600">Hapus Kelas</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <p class="text-gray-600 mb-4">Belajar membaca, menulis, dan memahami Bahasa Indonesia dengan baik untuk tingkat SD.</p>
-            <a href="materiMTKSD.html" 
-   class="inline-block bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 py-2 px-4 rounded-md transition-all duration-300">
-    Masuk ke Kelas
-</a>
 
-        </div>
-    
-        <!-- Ilmu Pengetahuan Alam (IPA) -->
-        <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
-            <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center">
-                    <i class="fas fa-leaf text-3xl text-teal-600 mr-3"></i>
-                    <h4 class="text-xl font-medium">Ilmu Pengetahuan Alam (IPA)</h4>
-                </div>
-                <!-- Hamburger Menu -->
-                <div class="relative">
-                    <button class="text-gray-600 focus:outline-none" onclick="toggleMenu('menu3')">
-                        <i class="fas fa-ellipsis-v text-2xl"></i>
-                    </button>
-                    <div id="menu3" class="hidden absolute right-0 bg-white shadow-lg rounded-md w-48 mt-2 z-10">
-                        <ul class="text-sm text-gray-700">
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Arsip Kelas</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 text-red-600">Hapus Kelas</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <p class="text-gray-600 mb-4">Mengenal berbagai konsep IPA, mulai dari tumbuhan, hewan, hingga fenomena alam di sekitar kita.</p>
-            <a href="materiMTKSD.html" 
-            class="inline-block bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 py-2 px-4 rounded-md transition-all duration-300">
-             Masuk ke Kelas
-         </a>
-         
-        </div>
-    
-        <!-- Pendidikan Pancasila -->
-        <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
-            <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center">
-                    <i class="fas fa-hand-holding-heart text-3xl text-orange-600 mr-3"></i>
-                    <h4 class="text-xl font-medium">Pendidikan Pancasila</h4>
-                </div>
-                <!-- Hamburger Menu -->
-                <div class="relative">
-                    <button class="text-gray-600 focus:outline-none" onclick="toggleMenu('menu4')">
-                        <i class="fas fa-ellipsis-v text-2xl"></i>
-                    </button>
-                    <div id="menu4" class="hidden absolute right-0 bg-white shadow-lg rounded-md w-48 mt-2 z-10">
-                        <ul class="text-sm text-gray-700">
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Arsip Kelas</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 text-red-600">Hapus Kelas</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <p class="text-gray-600 mb-4">Mempelajari nilai-nilai luhur dalam Pancasila serta penerapannya dalam kehidupan sehari-hari di Indonesia.</p>
-            <a href="materiMTKSD.html" 
-   class="inline-block bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 py-2 px-4 rounded-md transition-all duration-300">
-    Masuk ke Kelas
-</a>
-
-        </div>
-    
-        <!-- Seni Budaya -->
-        <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
-            <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center">
-                    <i class="fas fa-palette text-3xl text-purple-600 mr-3"></i>
-                    <h4 class="text-xl font-medium">Seni Budaya</h4>
-                </div>
-                <!-- Hamburger Menu -->
-                <div class="relative">
-                    <button class="text-gray-600 focus:outline-none" onclick="toggleMenu('menu5')">
-                        <i class="fas fa-ellipsis-v text-2xl"></i>
-                    </button>
-                    <div id="menu5" class="hidden absolute right-0 bg-white shadow-lg rounded-md w-48 mt-2 z-10">
-                        <ul class="text-sm text-gray-700">
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Arsip Kelas</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 text-red-600">Hapus Kelas</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <p class="text-gray-600 mb-4">Menikmati seni dan budaya Indonesia melalui seni lukis, tari, musik, dan teater untuk SD.</p>
-            <a href="materiMTKSD.html" 
-   class="inline-block bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 py-2 px-4 rounded-md transition-all duration-300">
-    Masuk ke Kelas
-</a>
-
-        </div>
-    
-        <!-- Pendidikan Jasmani -->
-        <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
-            <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center">
-                    <i class="fas fa-futbol text-3xl text-yellow-600 mr-3"></i>
-                    <h4 class="text-xl font-medium">Pendidikan Jasmani</h4>
-                </div>
-                <!-- Hamburger Menu -->
-                <div class="relative">
-                    <button class="text-gray-600 focus:outline-none" onclick="toggleMenu('menu6')">
-                        <i class="fas fa-ellipsis-v text-2xl"></i>
-                    </button>
-                    <div id="menu6" class="hidden absolute right-0 bg-white shadow-lg rounded-md w-48 mt-2 z-10">
-                        <ul class="text-sm text-gray-700">
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Arsip Kelas</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 text-red-600">Hapus Kelas</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <p class="text-gray-600 mb-4">Berlatih olahraga, permainan, dan menjaga kesehatan tubuh melalui kegiatan fisik yang menyenangkan.</p>
-            <a href="materiMTKSD.html" 
-            class="inline-block bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 py-2 px-4 rounded-md transition-all duration-300">
-             Masuk ke Kelas
-         </a>
-         
-        </div>
-    
-        <!-- IPS (Ilmu Pengetahuan Sosial) -->
-        <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
-            <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center">
-                    <i class="fas fa-globe-americas text-3xl text-blue-700 mr-3"></i>
-                    <h4 class="text-xl font-medium">Ilmu Pengetahuan Sosial (IPS)</h4>
-                </div>
-                <!-- Hamburger Menu -->
-                <div class="relative">
-                    <button class="text-gray-600 focus:outline-none" onclick="toggleMenu('menu7')">
-                        <i class="fas fa-ellipsis-v text-2xl"></i>
-                    </button>
-                    <div id="menu7" class="hidden absolute right-0 bg-white shadow-lg rounded-md w-48 mt-2 z-10">
-                        <ul class="text-sm text-gray-700">
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Arsip Kelas</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 text-red-600">Hapus Kelas</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <p class="text-gray-600 mb-4">Belajar tentang sejarah, geografi, ekonomi, dan budaya Indonesia serta dunia.</p>
-            <a href="materiMTKSD.html" 
-   class="inline-block bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 py-2 px-4 rounded-md transition-all duration-300">
-    Masuk ke Kelas
-</a>
-
-        </div>
-    
-        <!-- Agama -->
-        <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
-            <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center">
-                    <i class="fas fa-praying-hands text-3xl text-indigo-600 mr-3"></i>
-                    <h4 class="text-xl font-medium">Agama</h4>
-                </div>
-                <!-- Hamburger Menu -->
-                <div class="relative">
-                    <button class="text-gray-600 focus:outline-none" onclick="toggleMenu('menu8')">
-                        <i class="fas fa-ellipsis-v text-2xl"></i>
-                    </button>
-                    <div id="menu8" class="hidden absolute right-0 bg-white shadow-lg rounded-md w-48 mt-2 z-10">
-                        <ul class="text-sm text-gray-700">
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Arsip Kelas</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 text-red-600">Hapus Kelas</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <p class="text-gray-600 mb-4">Mempelajari ajaran agama dengan cara yang menyenangkan dan sesuai dengan nilai-nilai agama masing-masing.</p>
-            <a href="materiMTKSD.html" 
-            class="inline-block bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 py-2 px-4 rounded-md transition-all duration-300">
-             Masuk ke Kelas
-         </a>
-         
-        </div>
-    
-        <!-- Bahasa Inggris -->
-        <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
-            <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center">
-                    <i class="fas fa-language text-3xl text-blue-600 mr-3"></i>
-                    <h4 class="text-xl font-medium">Bahasa Inggris</h4>
-                </div>
-                <!-- Hamburger Menu -->
-                <div class="relative">
-                    <button class="text-gray-600 focus:outline-none" onclick="toggleMenu('menu9')">
-                        <i class="fas fa-ellipsis-v text-2xl"></i>
-                    </button>
-                    <div id="menu9" class="hidden absolute right-0 bg-white shadow-lg rounded-md w-48 mt-2 z-10">
-                        <ul class="text-sm text-gray-700">
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Arsip Kelas</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 text-red-600">Hapus Kelas</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <p class="text-gray-600 mb-4">Belajar kosakata, grammar, dan percakapan Bahasa Inggris dasar untuk SD.</p>
-            <a href="materiMTKSD.html" 
-   class="inline-block bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 py-2 px-4 rounded-md transition-all duration-300">
-    Masuk ke Kelas
-</a>
-
-        </div>
-    </div>
-</section>
-</div>
-</div>
 
 <!-- Modal Form -->
 <div id="joinClassModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
@@ -413,6 +172,89 @@
                 <button type="submit" id="submitBtn" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Bergabung</button>
             </div>
         </form>
+    </div>
+</div>
+
+<!-- Modal Notifikasi -->
+<div id="notificationModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-4xl transform transition-all duration-300">
+        <h3 class="text-2xl font-semibold mb-4">Notifikasi Tugas atau Materi Baru</h3>
+        
+        <!-- Tabel Notifikasi Tugas dengan Deadline -->
+        <h4 class="text-lg font-semibold mb-2">Tugas</h4>
+        <table class="min-w-full table-auto mb-6">
+            <thead>
+                <tr class="bg-gray-100 text-left text-sm text-gray-700">
+                    <th class="px-6 py-3">Jenis</th>
+                    <th class="px-6 py-3">Deskripsi</th>
+                    <th class="px-6 py-3">Tanggal Deadline</th>
+                    <th class="px-6 py-3"></th>
+                </tr>
+            </thead>
+            <tbody class="text-sm text-gray-600">
+                <!-- Tugas 1 -->
+                <tr class="border-b">
+                    <td class="px-6 py-4">
+                        <i class="fas fa-tasks text-blue-500"></i>
+                    </td>
+                    <td class="px-6 py-4">Tugas Matematika Dasar baru telah tersedia!</td>
+                    <td class="px-6 py-4">12 Desember 2024</td>
+                    <td class="px-6 py-4 text-blue-600">
+                        <a href="kelasMTKSD.html" class="hover:underline">Lihat Tugas</a>
+                    </td>
+                </tr>
+                <!-- Tugas 2 -->
+                <tr class="border-b">
+                    <td class="px-6 py-4">
+                        <i class="fas fa-tasks text-blue-500"></i>
+                    </td>
+                    <td class="px-6 py-4">Tugas Fisika baru telah tersedia!</td>
+                    <td class="px-6 py-4">13 Desember 2024</td>
+                    <td class="px-6 py-4 text-blue-600">
+                        <a href="materiFisika.html" class="hover:underline">Lihat Tugas</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Tabel Notifikasi Materi Baru -->
+        <h4 class="text-lg font-semibold mb-2">Materi Baru</h4>
+        <table class="min-w-full table-auto">
+            <thead>
+                <tr class="bg-gray-100 text-left text-sm text-gray-700">
+                    <th class="px-6 py-3">Jenis</th>
+                    <th class="px-6 py-3">Deskripsi</th>
+                    <th class="px-6 py-3"></th>
+                </tr>
+            </thead>
+            <tbody class="text-sm text-gray-600">
+                <!-- Materi 1 -->
+                <tr class="border-b">
+                    <td class="px-6 py-4">
+                        <i class="fas fa-book-open text-green-500"></i>
+                    </td>
+                    <td class="px-6 py-4">Materi Fisika telah di-upload oleh guru!</td>
+                    <td class="px-6 py-4 text-blue-600">
+                        <a href="materiFisika.html" class="hover:underline">Lihat Materi</a>
+                    </td>
+                </tr>
+                <!-- Materi 2 -->
+                <tr class="border-b">
+                    <td class="px-6 py-4">
+                        <i class="fas fa-book-open text-green-500"></i>
+                    </td>
+                    <td class="px-6 py-4">Materi Kimia baru telah tersedia!</td>
+                    <td class="px-6 py-4 text-blue-600">
+                        <a href="materiKimia.html" class="hover:underline">Lihat Materi</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Tombol Tutup -->
+        <div class="flex justify-end mt-6">
+            <button id="closeNotificationBtn" class="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 focus:outline-none">Tutup</button>
+        </div>
     </div>
 </div>
 
@@ -526,6 +368,25 @@
             });
             menu.classList.toggle('hidden');
         }
+    </script>
+
+    <script>
+        // Menangani event klik pada ikon notifikasi
+        const notificationBtn = document.getElementById('notificationBtn');
+        const notificationModal = document.getElementById('notificationModal');
+        const closeNotificationBtn = document.getElementById('closeNotificationBtn');
+        const notificationBadge = document.getElementById('notificationBadge');
+    
+        // Menampilkan modal notifikasi saat ikon notifikasi diklik
+        notificationBtn.addEventListener('click', () => {
+            notificationModal.classList.remove('hidden'); // Menampilkan modal
+            notificationBadge.classList.add('hidden'); // Menyembunyikan badge setelah dilihat
+        });
+    
+        // Menutup modal notifikasi saat tombol tutup diklik
+        closeNotificationBtn.addEventListener('click', () => {
+            notificationModal.classList.add('hidden'); // Menyembunyikan modal
+        });
     </script>
 
     

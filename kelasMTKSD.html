@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Matematika SD - EduPlatform</title>
+    <meta name="description" content="Materi Matematika Dasar untuk Siswa SD - EduPlatform">
+    
+    <!-- Link ke TailwindCSS dari CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Link ke Font Awesome untuk ikon -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-50 text-gray-900 font-sans">
+
+    <!-- Sidebar -->
+    <div class="flex h-screen">
+        <!-- Overlay untuk mobile -->
+        <div id="overlay" class="fixed inset-0 bg-black opacity-50 hidden z-30 lg:hidden"></div>
+
+        <!-- Sidebar -->
+        <div id="sidebar" class="bg-blue-600 text-white flex flex-col justify-between fixed h-full transition-all duration-300 ease-in-out transform -translate-x-full lg:translate-x-0 z-40" style="width: 256px;">
+            <!-- Desktop Toggle Button -->
+            <button id="sidebarToggle" class="hidden lg:block absolute -right-4 top-4 bg-blue-600 text-white p-2 rounded-full shadow-lg z-50">
+                <i class="fas fa-chevron-left transition-transform duration-300" id="toggleIcon"></i>
+            </button>
+
+            <!-- Header (Center text) -->
+            <div class="flex items-center justify-center p-4">
+                <h1 class="text-3xl font-semibold text-center mb-6 sidebar-text">
+                    <a href="dashboardSISWA.html" class="text-white hover:text-blue-300">EduPlatform</a>
+                </h1>
+            </div>
+
+            <!-- Menu Utama -->
+            <div class="flex flex-col p-4 flex-grow">
+                <ul>
+                    <li>
+                        <a href="manajemenkelasSD.html" class="flex items-center text-lg hover:text-blue-300 py-2">
+                            <i class="fas fa-chalkboard-teacher w-8"></i>
+                            <span class="sidebar-text ml-3">Kelas</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="tugasMTKSD.html" class="flex items-center text-lg hover:text-blue-300 py-2">
+                            <i class="fas fa-tasks w-8"></i>
+                            <span class="sidebar-text ml-3">Tugas</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#pengumuman" class="flex items-center text-lg hover:text-blue-300 py-2">
+                            <i class="fas fa-bullhorn w-8"></i>
+                            <span class="sidebar-text ml-3">Pengumuman</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#forum" class="flex items-center text-lg hover:text-blue-300 py-2">
+                            <i class="fas fa-comments w-8"></i>
+                            <span class="sidebar-text ml-3">Forum Diskusi</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Logout dan Arsip Kelas -->
+            <div class="p-4">
+                <ul>
+                    <li>
+                        <a href="arsipkelas.html" class="flex items-center text-lg hover:text-blue-300 py-2">
+                            <i class="fa-solid fa-box-archive w-8"></i>
+                            <span class="sidebar-text ml-3">Arsip Kelas</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html" class="flex items-center text-lg hover:text-blue-300 py-2">
+                            <i class="fas fa-sign-out-alt w-8"></i>
+                            <span class="sidebar-text ml-3">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div id="mainContent" class="flex-1 p-4 lg:p-6 transition-all duration-300 ease-in-out w-full lg:ml-64">
+            <div class="flex flex-col min-h-screen">
+                <header class="bg-cover bg-center text-white py-20 px-4 rounded-lg shadow-lg relative" 
+                style="background-image: url('https://picsum.photos/1500/500'); border-radius: 10px;">
+            <div class="container mx-auto">
+                <p class="text-lg mt-4">NAMA GURU</p>
+                <h1 class="text-4xl font-bold">Matematika Dasar</h1>
+            </div>
+        </header>
+        
+                
+        
+                <!-- Main Content -->
+                <main class="flex-grow container mx-auto px-4 py-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                        <!-- Kolom Kiri -->
+                        <div class="lg:col-span-1">
+                           <!-- Jumlah Siswa -->
+<div class="bg-white p-4 rounded-lg shadow-lg mb-6 flex items-center">
+    <h2 class="text-lg font-semibold flex-grow">Siswa</h2>
+    <!-- Icon untuk membuka modal -->
+    <button id="showStudentsBtn" class="text-blue-500 hover:text-blue-700 transition">
+        <i class="fas fa-users text-2xl"></i>
+    </button>
+</div>
+
+<!-- Modal untuk Menampilkan Daftar Siswa -->
+<div id="studentsModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 hidden z-50 flex items-center justify-center">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg">
+        <h3 class="text-2xl font-semibold mb-4">Daftar Siswa</h3>
+        <!-- Daftar siswa -->
+        <div class="space-y-4">
+            <!-- Contoh siswa -->
+            <div class="flex items-center space-x-4">
+                <img src="https://via.placeholder.com/40" alt="Foto Amanda" class="rounded-full w-10 h-10">
+                <span class="text-gray-700 font-medium">Amanda Sari</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <img src="https://via.placeholder.com/40" alt="Foto Budi" class="rounded-full w-10 h-10">
+                <span class="text-gray-700 font-medium">Budi Pratama</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <img src="https://via.placeholder.com/40" alt="Foto Chandra" class="rounded-full w-10 h-10">
+                <span class="text-gray-700 font-medium">Chandra Wirawan</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <img src="https://via.placeholder.com/40" alt="Foto Dwi" class="rounded-full w-10 h-10">
+                <span class="text-gray-700 font-medium">Dwi Susanti</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <img src="https://via.placeholder.com/40" alt="Foto Eka" class="rounded-full w-10 h-10">
+                <span class="text-gray-700 font-medium">Eka Putra</span>
+            </div>
+            <!-- Tambahkan siswa lainnya di sini -->
+        </div>
+        <!-- Tombol untuk menutup modal -->
+        <div class="flex justify-end mt-6">
+            <button id="closeStudentsModalBtn" class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600">
+                Tutup
+            </button>
+        </div>
+    </div>
+</div>
+                            <!-- Notifikasi Deadline Tugas -->
+<div class="bg-white p-4 rounded-lg shadow-lg">
+    <div class="flex items-center justify-between">
+        <h2 class="text-lg font-semibold">Mendatang</h2>
+        <!-- Ikon Notifikasi -->
+        <button id="showTasksModalBtn" class="text-blue-500 hover:text-blue-700">
+            <i class="fas fa-bell text-2xl"></i>
+        </button>
+    </div>
+    <ul class="mt-4 space-y-2">
+        <!-- Contoh tugas -->
+        <li class="flex items-center">
+            <i class="fas fa-tasks text-orange-500 text-lg mr-3"></i>
+            <span class="text-sm text-gray-600">Tugas Matematika: Pengurangan - <span class="text-red-500">16 Des</span></span>
+        </li>
+        <li class="flex items-center">
+            <i class="fas fa-flask text-teal-500 text-lg mr-3"></i>
+            <span class="text-sm text-gray-600">Tugas IPA: Kimia Dasar - <span class="text-red-500">20 Des</span></span>
+        </li>
+    </ul>
+    <a href="#" class="text-blue-500 text-sm hover:underline mt-3 inline-block">Lihat semua tugas</a>
+</div>
+
+<!-- Modal untuk Notifikasi Tugas -->
+<div id="tasksModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 hidden z-50 flex items-center justify-center">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg">
+        <h3 class="text-2xl font-semibold mb-4">Detail Deadline Tugas</h3>
+        <!-- Daftar tugas -->
+        <div class="space-y-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <i class="fas fa-tasks text-orange-500 text-2xl mr-3"></i>
+                    <div>
+                        <p class="text-gray-700 font-medium">Tugas Matematika: Pengurangan</p>
+                        <p class="text-sm text-gray-500">Batas Akhir: <span class="text-red-500">16 Des</span></p>
+                    </div>
+                </div>
+                <a href="#" class="text-blue-500 text-sm hover:underline">Lihat Detail</a>
+            </div>
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <i class="fas fa-flask text-teal-500 text-2xl mr-3"></i>
+                    <div>
+                        <p class="text-gray-700 font-medium">Tugas IPA: Kimia Dasar</p>
+                        <p class="text-sm text-gray-500">Batas Akhir: <span class="text-red-500">20 Des</span></p>
+                    </div>
+                </div>
+                <a href="#" class="text-blue-500 text-sm hover:underline">Lihat Detail</a>
+            </div>
+        </div>
+        <!-- Tombol untuk menutup modal -->
+        <div class="flex justify-end mt-6">
+            <button id="closeTasksModalBtn" class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600">
+                Tutup
+            </button>
+        </div>
+    </div>
+</div>
+                        </div>
+        
+                        <!-- Kolom Kanan -->
+                        <div class="lg:col-span-3">
+                            <!-- Form Pengumuman -->
+                            <div class="bg-white p-4 rounded-lg shadow-lg mb-6">
+                                <div class="flex items-center space-x-4">
+                                    <img src="https://via.placeholder.com/40" alt="Avatar" class="w-10 h-10 rounded-full">
+                                    <input type="text" placeholder="Umumkan sesuatu kepada kelas Anda" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                            </div>
+        
+                            <!-- Daftar Tugas dan Materi -->
+                            <div class="space-y-4">
+                                <!-- Item 1 -->
+                                <div class="bg-white p-4 rounded-lg shadow-lg flex items-center justify-between">
+                                    <div class="flex items-center space-x-4">
+                                        <i class="fas fa-clipboard text-orange-500 text-2xl"></i>
+                                        <div>
+                                            <p class="text-gray-800 text-sm font-semibold">Dwi Fatrianto Suyatno memposting tugas baru: <span class="text-blue-600">Tugas Pengendalian</span></p>
+                                            <p class="text-gray-500 text-sm">26 Nov</p>
+                                        </div>
+                                    </div>
+                                    <button class="text-gray-500 hover:text-gray-800">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                </div>
+        
+                                <!-- Item 2 -->
+                                <div class="bg-white p-4 rounded-lg shadow-lg flex items-center justify-between">
+                                    <div class="flex items-center space-x-4">
+                                        <i class="fas fa-file-alt text-orange-500 text-2xl"></i>
+                                        <div>
+                                            <p class="text-gray-800 text-sm font-semibold">Dwi Fatrianto Suyatno memposting materi baru: <span class="text-blue-600">Pengendalian</span></p>
+                                            <p class="text-gray-500 text-sm">26 Nov</p>
+                                        </div>
+                                    </div>
+                                    <button class="text-gray-500 hover:text-gray-800">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                </div>
+        
+                                <!-- Item 3 -->
+                                <div class="bg-white p-4 rounded-lg shadow-lg flex items-center justify-between">
+                                    <div class="flex items-center space-x-4">
+                                        <i class="fas fa-clipboard text-orange-500 text-2xl"></i>
+                                        <div>
+                                            <p class="text-gray-800 text-sm font-semibold">Dwi Fatrianto Suyatno memposting tugas baru: <span class="text-blue-600">Tugas Pengorganisasian</span></p>
+                                            <p class="text-gray-500 text-sm">12 Nov</p>
+                                        </div>
+                                    </div>
+                                    <button class="text-gray-500 hover:text-gray-800">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+    </div>
+
+    <!-- Script untuk Modal Notifikasi Tugas -->
+<script>
+    // Tombol untuk membuka modal
+    const showTasksModalBtn = document.getElementById('showTasksModalBtn');
+    const tasksModal = document.getElementById('tasksModal');
+    const closeTasksModalBtn = document.getElementById('closeTasksModalBtn');
+
+    // Fungsi untuk membuka modal
+    showTasksModalBtn.addEventListener('click', () => {
+        tasksModal.classList.remove('hidden');
+    });
+
+    // Fungsi untuk menutup modal
+    closeTasksModalBtn.addEventListener('click', () => {
+        tasksModal.classList.add('hidden');
+    });
+
+    // Menutup modal dengan mengklik di luar konten modal
+    tasksModal.addEventListener('click', (event) => {
+        if (event.target === tasksModal) {
+            tasksModal.classList.add('hidden');
+        }
+    });
+</script>
+    <!-- Script untuk Mengontrol Modal -->
+<script>
+    // Tombol untuk membuka modal
+    const showStudentsBtn = document.getElementById('showStudentsBtn');
+    // Modal elemen
+    const studentsModal = document.getElementById('studentsModal');
+    // Tombol untuk menutup modal
+    const closeStudentsModalBtn = document.getElementById('closeStudentsModalBtn');
+
+    // Fungsi untuk membuka modal
+    showStudentsBtn.addEventListener('click', () => {
+        studentsModal.classList.remove('hidden');
+    });
+
+    // Fungsi untuk menutup modal
+    closeStudentsModalBtn.addEventListener('click', () => {
+        studentsModal.classList.add('hidden');
+    });
+
+    // Menutup modal dengan mengklik di luar konten modal
+    studentsModal.addEventListener('click', (event) => {
+        if (event.target === studentsModal) {
+            studentsModal.classList.add('hidden');
+        }
+    });
+</script>
+
+    <!-- Script untuk Sidebar Responsive -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('mainContent');
+        const toggleIcon = document.getElementById('toggleIcon');
+        const sidebarTexts = document.querySelectorAll('.sidebar-text');
+        const overlay = document.getElementById('overlay');
+        
+        let isExpanded = localStorage.getItem('sidebarState') === 'expanded' ? true : false;
+
+        // Menyesuaikan posisi sidebar berdasarkan status yang disimpan
+        function setSidebarState() {
+            if (isExpanded) {
+                sidebar.style.width = '256px';
+                mainContent.style.marginLeft = '256px';
+                toggleIcon.style.transform = 'rotate(0deg)';
+                sidebarTexts.forEach(text => text.style.display = 'inline');
+            } else {
+                sidebar.style.width = '64px';
+                mainContent.style.marginLeft = '64px';
+                toggleIcon.style.transform = 'rotate(180deg)';
+                sidebarTexts.forEach(text => text.style.display = 'none');
+            }
+        }
+
+        // Toggle untuk Desktop
+        function toggleDesktopSidebar() {
+            isExpanded = !isExpanded;
+            localStorage.setItem('sidebarState', isExpanded ? 'expanded' : 'collapsed');
+            setSidebarState();
+        }
+
+        // Toggle untuk Mobile
+        function toggleMobileSidebar() {
+            const isHidden = sidebar.classList.contains('-translate-x-full');
+            
+            if (isHidden) {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+            }
+        }
+
+        // Event Listeners
+        document.getElementById('sidebarToggle').addEventListener('click', toggleDesktopSidebar);
+        mobileMenuBtn.addEventListener('click', toggleMobileSidebar);
+        overlay.addEventListener('click', toggleMobileSidebar);
+
+        // Handle Resize dan Sesuaikan Layout
+        function handleResize() {
+            const isDesktop = window.innerWidth >= 1024; // lg breakpoint
+            if (isDesktop) {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.add('hidden');
+                mainContent.style.marginLeft = isExpanded ? '256px' : '64px';
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                mainContent.style.marginLeft = '0';
+            }
+        }
+
+        window.addEventListener('resize', handleResize);
+        handleResize(); // Initial check
+
+        // Set the initial state of the sidebar
+        setSidebarState();
+    </script>
+</body>
+
+</html>
