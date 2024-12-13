@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Kelas - EduPlatform</title>
+    <meta name="description" content="Dashboard untuk Siswa di EduPlatform">
+
+    <!-- Link ke TailwindCSS dari CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Link ke FontAwesome untuk ikon -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <!-- Link ke Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-900 font-sans">
+    <!-- Mobile Menu Button -->
+    <button id="mobileMenuBtn" class="lg:hidden fixed top-4 left-4 z-50 bg-blue-600 text-white p-2 rounded-md">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="flex h-screen">
+        <!-- Overlay untuk mobile -->
+        <div id="overlay" class="fixed inset-0 bg-black opacity-50 hidden z-30 lg:hidden"></div>
+
+        <!-- Sidebar -->
+        <div id="sidebar" class="bg-blue-600 text-white flex flex-col justify-between fixed h-full transition-all duration-300 ease-in-out transform -translate-x-full lg:translate-x-0 z-40" style="width: 256px;">
+            <!-- Desktop Toggle Button -->
+            <button id="sidebarToggle" class="hidden lg:block absolute -right-4 top-4 bg-blue-600 text-white p-2 rounded-full shadow-lg z-50">
+                <i class="fas fa-chevron-left transition-transform duration-300" id="toggleIcon"></i>
+            </button>
+
+            <!-- Header (Center text) -->
+            <div class="flex items-center justify-center p-4">
+                <h1 class="text-3xl font-semibold text-center mb-6 sidebar-text">
+                    <a href="dashboardSISWA.html" class="text-white hover:text-blue-300">EduPlatform</a>
+                </h1>
+            </div>
+
+            <!-- Menu Utama (Tanpa Gap) -->
+            <div class="flex flex-col p-4 flex-grow">
+                <ul>
+                    <li>
+                        <a href="manajemenkelasSD.html" class="flex items-center text-lg hover:text-blue-300 py-2">
+                            <i class="fas fa-chalkboard-teacher w-8"></i>
+                            <span class="sidebar-text ml-3">Kelas</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="tugasMTKSD.html" class="flex items-center text-lg hover:text-blue-300 py-2">
+                            <i class="fas fa-tasks w-8"></i>
+                            <span class="sidebar-text ml-3">Tugas</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#pengumuman" class="flex items-center text-lg hover:text-blue-300 py-2">
+                            <i class="fas fa-bullhorn w-8"></i>
+                            <span class="sidebar-text ml-3">Pengumuman</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#forum" class="flex items-center text-lg hover:text-blue-300 py-2">
+                            <i class="fas fa-comments w-8"></i>
+                            <span class="sidebar-text ml-3">Forum Diskusi</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Logout dan Arsip Kelas (Di bawah) -->
+            <div class="p-4">
+                <ul>
+                    <li>
+                        <a href="arsipkelas.html" class="flex items-center text-lg hover:text-blue-300 py-2">
+                            <i class="fa-solid fa-box-archive w-8"></i>
+                            <span class="sidebar-text ml-3">Arsip Kelas</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html" class="flex items-center text-lg hover:text-blue-300 py-2">
+                            <i class="fas fa-sign-out-alt w-8"></i>
+                            <span class="sidebar-text ml-3">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div id="mainContent" class="flex-1 p-6 lg:p-8 transition-all duration-300 ease-in-out w-full lg:ml-64">
+            <div class="flex flex-col lg:flex-row">
+                <!-- Left Section (Assignment Details) -->
+                <div class="flex-1 bg-white p-6 rounded-lg shadow-md mb-6 lg:mb-0">
+                    <h2 class="text-2xl font-semibold mb-4">Tugas Matematika kelas ?</h2>
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
+                            <i class="fas fa-file-alt text-gray-600"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-xl font-bold">0/100 poin</p>
+                            <p class="text-gray-600">Nama Guru • Tenggat waktu</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">Deskripsi Tugas.</p>
+                    <div class="border rounded-lg p-4 mb-4 flex items-center">
+                        <!-- Icon preview task -->
+                        <img alt="Document preview" class="w-16 h-16 mr-4" src="https://storage.googleapis.com/a1aa/image/Jaltp2FSav6uKxobtzenjlWbImRYjoWJOKHORN68mebrVg6TA.jpg" />
+        
+                        <!-- Display task based on type -->
+                        <a class="text-blue-600 underline flex items-center" href="#" id="taskLink">
+                            <span class="mr-2">Kriteria Tugas</span>
+        
+                            <!-- Add icons based on task type -->
+                            <i class="fas fa-link text-gray-600 mr-2" id="linkIcon"></i> <!-- Default for link -->
+                            <i class="fas fa-file-pdf text-red-600 mr-2 hidden" id="pdfIcon"></i> <!-- PDF Icon -->
+                            <i class="fas fa-file-word text-blue-600 mr-2 hidden" id="wordIcon"></i> <!-- Word Icon -->
+                            <i class="fas fa-question-circle text-yellow-500 mr-2 hidden" id="quizIcon"></i> <!-- Quiz Icon -->
+                        </a>
+        
+                        <!-- Tab or Modal to open tasks based on task type -->
+                        <div id="taskModal" class="hidden bg-white p-4 rounded-lg shadow-lg">
+                            <p class="text-lg font-semibold mb-4">Buka Tugas</p>
+                            <div id="taskContent"></div> <!-- Content will change based on task type -->
+                            <button class="mt-4 bg-blue-600 text-white py-2 px-4 rounded-lg" onclick="closeModal()">Tutup</button>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Right Section (Submission Form) -->
+                <div class="w-full lg:w-1/3">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h2 class="text-xl font-semibold mb-4">Pengumpulan Tugas</h2>
+        
+                        <!-- Pilihan Metode Pengumpulan Tugas -->
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">Pilih Metode Pengumpulan</label>
+                            <select id="metodeTugas" class="w-full px-4 py-2 border rounded-md">
+                                <option value="link">Tugas via Link</option>
+                                <option value="gdrive">Tugas via Google Drive</option>
+                                <option value="file">Upload File Tugas</option>
+                            </select>
+                        </div>
+        
+                        <!-- Form Pengumpulan -->
+                        <form id="formPengumpulan" action="#" method="POST">
+                            <!-- Tugas via Link -->
+                            <div id="linkTugasField" class="mb-4">
+                                <label for="linkTugas" class="block text-gray-700">Tugas via Link</label>
+                                <input type="url" id="linkTugas" name="linkTugas" class="w-full px-4 py-2 border rounded-md mt-2" placeholder="Masukkan URL tugas" />
+                            </div>
+        
+                            <!-- Tugas via Google Drive -->
+                            <div id="gdriveTugasField" class="mb-4 hidden">
+                                <label for="gdriveTugas" class="block text-gray-700">Tugas via Google Drive</label>
+                                <input type="url" id="gdriveTugas" name="gdriveTugas" class="w-full px-4 py-2 border rounded-md mt-2" placeholder="Masukkan link Google Drive" />
+                            </div>
+        
+                            <!-- Upload File Tugas -->
+                            <div id="fileTugasField" class="mb-4 hidden">
+                                <label for="fileTugas" class="block text-gray-700">Upload File Tugas</label>
+                                <input type="file" id="fileTugas" name="fileTugas" class="w-full mt-2" />
+                            </div>
+        
+                            <!-- Submit Button -->
+                            <button id="submitTugas" type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md mt-4 hover:bg-blue-700">Kirim Tugas</button>
+                        </form>
+        
+                        <!-- Notifikasi Pengumpulan -->
+                        <div id="notif" class="hidden text-green-600 mt-4">
+                            <p>Tugas telah berhasil dikumpulkan!</p>
+                        </div>
+        
+                        <!-- Pesan Tenggat Waktu -->
+                        <div id="lateNotif" class="hidden text-red-600 mt-4">
+                            <p>Anda telat untuk mengumpulkan tugas. Semoga tugas-tugas berikutnya Anda tidak telat lagi.</p>
+                        </div>
+        
+                        <!-- Informasi Tenggat Waktu -->
+                        <p class="text-gray-500 text-sm mt-4">Tugas tidak dapat diserahkan setelah batas waktu.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script untuk Sidebar Responsive -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('mainContent');
+        const toggleIcon = document.getElementById('toggleIcon');
+        const sidebarTexts = document.querySelectorAll('.sidebar-text');
+        const overlay = document.getElementById('overlay');
+        
+        let isExpanded = localStorage.getItem('sidebarState') === 'expanded' ? true : false;
+
+        // Menyesuaikan posisi sidebar berdasarkan status yang disimpan
+        function setSidebarState() {
+            if (isExpanded) {
+                sidebar.style.width = '256px';
+                mainContent.style.marginLeft = '256px';
+                toggleIcon.style.transform = 'rotate(0deg)';
+                sidebarTexts.forEach(text => text.style.display = 'inline');
+            } else {
+                sidebar.style.width = '64px';
+                mainContent.style.marginLeft = '64px';
+                toggleIcon.style.transform = 'rotate(180deg)';
+                sidebarTexts.forEach(text => text.style.display = 'none');
+            }
+        }
+
+        // Toggle untuk Desktop
+        function toggleDesktopSidebar() {
+            isExpanded = !isExpanded;
+            localStorage.setItem('sidebarState', isExpanded ? 'expanded' : 'collapsed'); // Menyimpan status sidebar
+            setSidebarState();
+        }
+
+        // Toggle untuk Mobile
+        function toggleMobileSidebar() {
+            const isHidden = sidebar.classList.contains('-translate-x-full');
+            
+            if (isHidden) {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+            }
+        }
+
+        // Event Listeners
+        document.getElementById('sidebarToggle').addEventListener('click', toggleDesktopSidebar);
+        mobileMenuBtn.addEventListener('click', toggleMobileSidebar);
+        overlay.addEventListener('click', toggleMobileSidebar);
+
+        // Handle Resize dan Sesuaikan Layout
+        function handleResize() {
+            const isDesktop = window.innerWidth >= 1024; // lg breakpoint
+            if (isDesktop) {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.add('hidden');
+                mainContent.style.marginLeft = isExpanded ? '256px' : '64px';
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                mainContent.style.marginLeft = '0';
+            }
+        }
+
+        window.addEventListener('resize', handleResize);
+        handleResize(); // Initial check
+
+        // Set the initial state of the sidebar
+        setSidebarState();
+    </script>
+
+    <!-- Script to handle different task types and modal opening -->
+<script>
+    // Function to handle task type and open appropriate modal
+    const taskLink = document.getElementById('taskLink');
+    const taskModal = document.getElementById('taskModal');
+    const taskContent = document.getElementById('taskContent');
+    
+    const linkIcon = document.getElementById('linkIcon');
+    const pdfIcon = document.getElementById('pdfIcon');
+    const wordIcon = document.getElementById('wordIcon');
+    const quizIcon = document.getElementById('quizIcon');
+
+    // Example of task type (can be dynamic based on task data)
+    const taskType = 'pdf'; // Can be 'link', 'pdf', 'word', or 'quiz'
+
+    // Set the task type and show corresponding icon
+    switch (taskType) {
+        case 'link':
+            linkIcon.classList.remove('hidden');
+            taskLink.href = 'https://example.com/tugaslink'; // Update with actual link
+            taskContent.innerHTML = '<p>Ini adalah tugas berupa link. Klik untuk mengakses tugas.</p>';
+            break;
+        case 'pdf':
+            pdfIcon.classList.remove('hidden');
+            taskLink.href = 'https://example.com/tugas.pdf'; // Update with actual PDF file URL
+            taskContent.innerHTML = '<p>Ini adalah tugas berupa file PDF. Klik untuk mengunduh tugas.</p>';
+            break;
+        case 'word':
+            wordIcon.classList.remove('hidden');
+            taskLink.href = 'https://example.com/tugas.docx'; // Update with actual Word file URL
+            taskContent.innerHTML = '<p>Ini adalah tugas berupa file Word. Klik untuk mengunduh tugas.</p>';
+            break;
+        case 'quiz':
+            quizIcon.classList.remove('hidden');
+            taskLink.href = '#'; // Link for quiz (could lead to a quiz page or modal)
+            taskContent.innerHTML = '<p>Ini adalah tugas berupa kuis. Klik untuk memulai kuis.</p>';
+            break;
+        default:
+            // Default state, if taskType is unknown
+            taskContent.innerHTML = '<p>Tugas tidak diketahui.</p>';
+            break;
+    }
+
+    // Open the modal when the task link is clicked
+    taskLink.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent default link action
+        taskModal.classList.remove('hidden'); // Show modal
+    });
+
+    // Close the modal
+    function closeModal() {
+        taskModal.classList.add('hidden'); // Hide modal
+    }
+</script>
+
+<script>
+    // Tanggal tenggat waktu pengumpulan tugas
+    const deadline = new Date('2024-12-15T23:59:59'); // Ganti dengan tanggal tenggat waktu yang diinginkan
+
+    // Menghitung apakah tugas sudah lewat tenggat waktu
+    const isLate = new Date() > deadline;
+
+    // Menyembunyikan form jika lewat tenggat waktu
+    if (isLate) {
+        document.getElementById('formPengumpulan').style.display = 'none';
+        document.getElementById('lateNotif').classList.remove('hidden');
+        document.getElementById('submitTugas').disabled = true;
+    }
+
+    // Menangani perubahan metode pengumpulan
+    const metodeTugasSelect = document.getElementById('metodeTugas');
+    const linkTugasField = document.getElementById('linkTugasField');
+    const gdriveTugasField = document.getElementById('gdriveTugasField');
+    const fileTugasField = document.getElementById('fileTugasField');
+
+    metodeTugasSelect.addEventListener('change', function () {
+        // Menyembunyikan semua input
+        linkTugasField.classList.add('hidden');
+        gdriveTugasField.classList.add('hidden');
+        fileTugasField.classList.add('hidden');
+
+        // Menampilkan input berdasarkan pilihan
+        const selectedMethod = metodeTugasSelect.value;
+        if (selectedMethod === 'link') {
+            linkTugasField.classList.remove('hidden');
+        } else if (selectedMethod === 'gdrive') {
+            gdriveTugasField.classList.remove('hidden');
+        } else if (selectedMethod === 'file') {
+            fileTugasField.classList.remove('hidden');
+        }
+    });
+
+    // Menangani pengiriman form
+    const formPengumpulan = document.getElementById('formPengumpulan');
+    const submitTugasButton = document.getElementById('submitTugas');
+    const notif = document.getElementById('notif');
+
+    formPengumpulan.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        // Simulasi pengumpulan tugas berhasil
+        notif.classList.remove('hidden');
+
+        // Menyembunyikan tombol pengumpulan
+        submitTugasButton.style.display = 'none';
+    });
+</script>
+
+</body>
+</html>
