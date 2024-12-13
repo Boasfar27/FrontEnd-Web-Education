@@ -16,6 +16,10 @@
 
     <!-- Link ke Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Toastify.js CDN -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.2/toastify.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.11.2/toastify.min.js"></script>
+
 </head>
 
 <body class="bg-gray-50 text-gray-900 font-sans">
@@ -93,100 +97,149 @@
 
         <!-- Main Content -->
         <div id="mainContent" class="flex-1 p-6 lg:p-8 transition-all duration-300 ease-in-out w-full lg:ml-64">
-            <div class="flex flex-col lg:flex-row gap-6"> <!-- Menambahkan gap-6 untuk jarak antara kolom pada desktop -->
-                <!-- Left Section (Assignment Details) -->
-                <div class="flex-1 bg-white p-6 rounded-lg shadow-md mb-6 lg:mb-0">
-                    <h2 class="text-2xl font-semibold mb-4">Tugas Matematika kelas ?</h2>
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
-                            <i class="fas fa-file-alt text-gray-600"></i>
-                        </div>
-                        <div class="ml-4">
-                            <p class="text-xl font-bold">0/100 poin</p>
-                            <p class="text-gray-600">Nama Guru • Tenggat waktu</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-700 mb-4">Deskripsi Tugas.</p>
-                    <div class="border rounded-lg p-4 mb-4 flex items-center">
-                        <!-- Icon preview task -->
-                        <img alt="Document preview" class="w-16 h-16 mr-4" src="https://storage.googleapis.com/a1aa/image/Jaltp2FSav6uKxobtzenjlWbImRYjoWJOKHORN68mebrVg6TA.jpg" />
-        
-                        <!-- Display task based on type -->
-                        <a class="text-blue-600 underline flex items-center" href="#" id="taskLink">
-                            <span class="mr-2">Kriteria Tugas</span>
-        
-                            <!-- Add icons based on task type -->
-                            <i class="fas fa-link text-gray-600 mr-2" id="linkIcon"></i> <!-- Default for link -->
-                            <i class="fas fa-file-pdf text-red-600 mr-2 hidden" id="pdfIcon"></i> <!-- PDF Icon -->
-                            <i class="fas fa-file-word text-blue-600 mr-2 hidden" id="wordIcon"></i> <!-- Word Icon -->
-                            <i class="fas fa-question-circle text-yellow-500 mr-2 hidden" id="quizIcon"></i> <!-- Quiz Icon -->
-                        </a>
-        
-                        <!-- Tab or Modal to open tasks based on task type -->
-                        <div id="taskModal" class="hidden bg-white p-4 rounded-lg shadow-lg">
-                            <p class="text-lg font-semibold mb-4">Buka Tugas</p>
-                            <div id="taskContent"></div> <!-- Content will change based on task type -->
-                            <button class="mt-4 bg-blue-600 text-white py-2 px-4 rounded-lg" onclick="closeModal()">Tutup</button>
-                        </div>
-                    </div>
+        <div class="flex flex-col lg:flex-row gap-6">
+        <!-- Left Section (Assignment Details) -->
+        <div class="flex-1 bg-white p-6 rounded-lg shadow-md mb-6 lg:mb-0">
+            <h2 class="text-2xl font-semibold mb-4">Tugas Matematika kelas ?</h2>
+            <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
+                    <i class="fas fa-file-alt text-gray-600"></i>
                 </div>
-        
-                <!-- Right Section (Submission Form) -->
-                <div class="w-full lg:w-1/3">
-                    <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h2 class="text-xl font-semibold mb-4">Pengumpulan Tugas</h2>
-        
-                        <!-- Pilihan Metode Pengumpulan Tugas -->
-                        <div class="mb-4">
-                            <label class="block text-gray-700 mb-2">Pilih Metode Pengumpulan</label>
-                            <select id="metodeTugas" class="w-full px-4 py-2 border rounded-md">
-                                <option value="link">Tugas via Link</option>
-                                <option value="gdrive">Tugas via Google Drive</option>
-                                <option value="file">Upload File Tugas</option>
-                            </select>
-                        </div>
-        
-                        <!-- Form Pengumpulan -->
-                        <form id="formPengumpulan" action="#" method="POST">
-                            <!-- Tugas via Link -->
-                            <div id="linkTugasField" class="mb-4">
-                                <label for="linkTugas" class="block text-gray-700">Tugas via Link</label>
-                                <input type="url" id="linkTugas" name="linkTugas" class="w-full px-4 py-2 border rounded-md mt-2" placeholder="Masukkan URL tugas" />
-                            </div>
-        
-                            <!-- Tugas via Google Drive -->
-                            <div id="gdriveTugasField" class="mb-4 hidden">
-                                <label for="gdriveTugas" class="block text-gray-700">Tugas via Google Drive</label>
-                                <input type="url" id="gdriveTugas" name="gdriveTugas" class="w-full px-4 py-2 border rounded-md mt-2" placeholder="Masukkan link Google Drive" />
-                            </div>
-        
-                            <!-- Upload File Tugas -->
-                            <div id="fileTugasField" class="mb-4 hidden">
-                                <label for="fileTugas" class="block text-gray-700">Upload File Tugas</label>
-                                <input type="file" id="fileTugas" name="fileTugas" class="w-full mt-2" />
-                            </div>
-        
-                            <!-- Submit Button -->
-                            <button id="submitTugas" type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md mt-4 hover:bg-blue-700">Kirim Tugas</button>
-                        </form>
-        
-                        <!-- Notifikasi Pengumpulan -->
-                        <div id="notif" class="hidden text-green-600 mt-4">
-                            <p>Tugas telah berhasil dikumpulkan!</p>
-                        </div>
-        
-                        <!-- Pesan Tenggat Waktu -->
-                        <div id="lateNotif" class="hidden text-red-600 mt-4">
-                            <p>Anda telat untuk mengumpulkan tugas. Semoga tugas-tugas berikutnya Anda tidak telat lagi.</p>
-                        </div>
-        
-                        <!-- Informasi Tenggat Waktu -->
-                        <p class="text-gray-500 text-sm mt-4">Tugas tidak dapat diserahkan setelah batas waktu.</p>
-                    </div>
+                <div class="ml-4">
+                    <p class="text-xl font-bold">0/100 poin</p>
+                    <p class="text-gray-600">Nama Guru • Tenggat waktu</p>
                 </div>
+            </div>
+            <p class="text-gray-700 mb-4">Deskripsi Tugas.</p>
+            <div class="border rounded-lg p-4 mb-4 flex items-center">
+                <!-- Icon preview task -->
+                <img alt="Document preview" class="w-16 h-16 mr-4" src="https://storage.googleapis.com/a1aa/image/Jaltp2FSav6uKxobtzenjlWbImRYjoWJOKHORN68mebrVg6TA.jpg" />
+                <!-- Task link with download icon -->
+                <a class="flex items-center cursor-pointer p-2 rounded-md transition-all duration-200" href="https://example.com/tugas.pdf" download id="taskLink">
+                    <span class="mr-2 text-gray-800 hover:text-blue-600 transition-all duration-200">Kriteria Tugas</span>
+                    <i class="fas fa-download text-green-600 mr-2 hover:text-green-700 transition-all duration-200" id="downloadIcon"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Right Section (Submission Form) -->
+        <div class="w-full lg:w-1/3">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold mb-4">Pengumpulan Tugas</h2>
+                
+                <!-- Pilihan Metode Pengumpulan Tugas -->
+                <div class="mb-4" id="metodeTugasField">
+                    <label class="block text-gray-700 mb-2">Pilih Metode Pengumpulan</label>
+                    <select id="metodeTugas" class="w-full px-4 py-2 border rounded-md">
+                        <option value="link">Tugas via Link</option>
+                        <option value="gdrive">Tugas via Google Drive</option>
+                        <option value="file">Upload File Tugas</option>
+                    </select>
+                </div>
+                
+                <!-- Form Pengumpulan -->
+                <form id="formPengumpulan" action="#" method="POST">
+                    <!-- Tugas via Link -->
+                    <div id="linkTugasField" class="mb-4">
+                        <label for="linkTugas" class="block text-gray-700">Tugas via Link</label>
+                        <input type="url" id="linkTugas" name="linkTugas" class="w-full px-4 py-2 border rounded-md mt-2" placeholder="Masukkan URL tugas" />
+                    </div>
+                
+                    <!-- Tugas via Google Drive -->
+                    <div id="gdriveTugasField" class="mb-4 hidden">
+                        <label for="gdriveTugas" class="block text-gray-700">Tugas via Google Drive</label>
+                        <input type="url" id="gdriveTugas" name="gdriveTugas" class="w-full px-4 py-2 border rounded-md mt-2" placeholder="Masukkan link Google Drive" />
+                    </div>
+                
+                    <!-- Upload File Tugas -->
+                    <div id="fileTugasField" class="mb-4 hidden">
+                        <label for="fileTugas" class="block text-gray-700">Upload File Tugas</label>
+                        <input type="file" id="fileTugas" name="fileTugas" class="w-full mt-2" />
+                    </div>
+                
+                    <!-- Submit Button -->
+                    <button id="submitTugas" type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md mt-4 hover:bg-blue-700">Kirim Tugas</button>
+                </form>
+                
+                <!-- Notifikasi Pengumpulan -->
+                <div id="notif" class="hidden text-green-600 mt-4">
+                    <p>Tugas telah berhasil dikumpulkan!</p>
+                </div>
+                
+                <!-- Pesan Tenggat Waktu -->
+                <div id="lateNotif" class="hidden text-red-600 mt-4">
+                    <p>Anda telat untuk mengumpulkan tugas. Semoga tugas-tugas berikutnya Anda tidak telat lagi.</p>
+                    <br>
+                    <p>Silahkan anda menghubungi Guru dengan nomer berikut yang telah ada di dalam informasi.</p>
+                </div>
+                
+                <!-- Informasi Tenggat Waktu -->
+                <p class="text-gray-500 text-sm mt-4">Tugas tidak dapat diserahkan setelah batas waktu.</p>
             </div>
         </div>
     </div>
+
+    <!-- Card Informasi Kontak Guru (Dihilangkan saat belum telat) -->
+    <div id="guruContactCard" class="hidden bg-white p-6 rounded-lg shadow-md mt-6">
+        <h3 class="text-2xl font-semibold mb-4 flex items-center">
+            <i class="fas fa-info-circle text-blue-600 mr-2"></i> <!-- Ikon Informasi -->
+            Hubungi Guru
+        </h3>
+        <div class="flex items-start mb-4"> <!-- Mengatur ikon dan teks sejajar -->
+            <div class="w-9 h-9 bg-blue-600 text-white rounded-full flex items-center justify-center">
+                <i class="fas fa-phone-alt"></i>
+            </div>
+            <div class="ml-4 flex flex-col gap-1"> <!-- Menambahkan flex dan gap untuk pengaturan sejajar -->
+                <p class="text-xl font-bold flex">
+                    <span class="w-36">Nomor Guru</span> <!-- Lebar tetap untuk label -->
+                    <span class="text-blue-600">: 0812-3456-7890</span>
+                </p>
+                <p class="text-gray-600 flex">
+                    <span class="w-36">Nama Guru</span> <!-- Lebar tetap untuk label -->
+                    <span>: DWI</span>
+                </p>
+                <p class="text-gray-600 flex">
+                    <span class="w-36">Jam Chat</span> <!-- Lebar tetap untuk label -->
+                    <span>: 08.00 - 15.00 WIB</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+    <script>
+        // Menambahkan event listener pada taskLink
+        document.getElementById('taskLink').addEventListener('click', function (e) {
+            e.preventDefault(); // Mencegah aksi default dari tautan
+            
+            const fileUrl = 'INI TUGAS.pdf'; // Gantilah URL ini dengan URL tugas Anda
+            const taskType = 'pdf'; // Bisa diubah sesuai jenis tugas
+    
+            // Menangani tugas berdasarkan tipe
+            if (taskType === 'pdf') {
+                // Jika tugas PDF, langsung mengunduh
+                const link = document.createElement('a');
+                link.href = fileUrl;
+                link.download = 'Tugas Matematika.pdf'; // Nama file yang akan diunduh
+                link.click(); // Trigger download
+                
+                // Menampilkan notifikasi menggunakan Toastify
+                Toastify({
+                    text: "Tugas berhasil diunduh!", // Pesan notifikasi
+                    duration: 3000, // Durasi notifikasi muncul (dalam milidetik)
+                    close: true, // Menampilkan tombol close
+                    gravity: "top", // Menempatkan notifikasi di atas halaman
+                    position: "right", // Posisi notifikasi di sebelah kanan
+                    backgroundColor: "#4CAF50", // Warna latar belakang notifikasi (hijau)
+                    stopOnFocus: true // Jika notifikasi diklik, ia tidak akan hilang
+                }).showToast(); // Menampilkan notifikasi Toastify
+            } else {
+                // Jika tugas bukan PDF, buka di tab baru
+                window.open(fileUrl, '_blank'); // Membuka tugas di tab baru
+            }
+        });
+    </script>
+    
 
     <!-- Script untuk Sidebar Responsive -->
     <script>
@@ -259,121 +312,76 @@
         setSidebarState();
     </script>
 
-    <!-- Script to handle different task types and modal opening -->
-<script>
-    // Function to handle task type and open appropriate modal
-    const taskLink = document.getElementById('taskLink');
-    const taskModal = document.getElementById('taskModal');
-    const taskContent = document.getElementById('taskContent');
+
+    <script>
+        // Membuat objek tanggal untuk saat ini
+        const now = new Date();
     
-    const linkIcon = document.getElementById('linkIcon');
-    const pdfIcon = document.getElementById('pdfIcon');
-    const wordIcon = document.getElementById('wordIcon');
-    const quizIcon = document.getElementById('quizIcon');
-
-    // Example of task type (can be dynamic based on task data)
-    const taskType = 'pdf'; // Can be 'link', 'pdf', 'word', or 'quiz'
-
-    // Set the task type and show corresponding icon
-    switch (taskType) {
-        case 'link':
-            linkIcon.classList.remove('hidden');
-            taskLink.href = 'https://example.com/tugaslink'; // Update with actual link
-            taskContent.innerHTML = '<p>Ini adalah tugas berupa link. Klik untuk mengakses tugas.</p>';
-            break;
-        case 'pdf':
-            pdfIcon.classList.remove('hidden');
-            taskLink.href = 'https://example.com/tugas.pdf'; // Update with actual PDF file URL
-            taskContent.innerHTML = '<p>Ini adalah tugas berupa file PDF. Klik untuk mengunduh tugas.</p>';
-            break;
-        case 'word':
-            wordIcon.classList.remove('hidden');
-            taskLink.href = 'https://example.com/tugas.docx'; // Update with actual Word file URL
-            taskContent.innerHTML = '<p>Ini adalah tugas berupa file Word. Klik untuk mengunduh tugas.</p>';
-            break;
-        case 'quiz':
-            quizIcon.classList.remove('hidden');
-            taskLink.href = '#'; // Link for quiz (could lead to a quiz page or modal)
-            taskContent.innerHTML = '<p>Ini adalah tugas berupa kuis. Klik untuk memulai kuis.</p>';
-            break;
-        default:
-            // Default state, if taskType is unknown
-            taskContent.innerHTML = '<p>Tugas tidak diketahui.</p>';
-            break;
-    }
-
-    // Open the modal when the task link is clicked
-    taskLink.addEventListener('click', (e) => {
-        e.preventDefault(); // Prevent default link action
-        taskModal.classList.remove('hidden'); // Show modal
-    });
-
-    // Close the modal
-    function closeModal() {
-        taskModal.classList.add('hidden'); // Hide modal
-    }
-</script>
-
-<script>
-    // Membuat objek tanggal untuk saat ini
-    const now = new Date();
-
-    // Mengatur jam menjadi 23, menit menjadi 05, dan detik menjadi 00
-    now.setHours(23);
-    now.setMinutes(59);
-    now.setSeconds(0);
-
-    // Tanggal tenggat waktu pengumpulan tugas
-    const deadline = now; 
-
-    // Menghitung apakah tugas sudah lewat tenggat waktu
-    const isLate = new Date() > deadline;
-
-    // Menyembunyikan form jika lewat tenggat waktu
-    if (isLate) {
-        document.getElementById('formPengumpulan').style.display = 'none';
-        document.getElementById('lateNotif').classList.remove('hidden');
-        document.getElementById('submitTugas').disabled = true;
-    }
-
-    // Menangani perubahan metode pengumpulan
-    const metodeTugasSelect = document.getElementById('metodeTugas');
-    const linkTugasField = document.getElementById('linkTugasField');
-    const gdriveTugasField = document.getElementById('gdriveTugasField');
-    const fileTugasField = document.getElementById('fileTugasField');
-
-    metodeTugasSelect.addEventListener('change', function () {
-        // Menyembunyikan semua input
-        linkTugasField.classList.add('hidden');
-        gdriveTugasField.classList.add('hidden');
-        fileTugasField.classList.add('hidden');
-
-        // Menampilkan input berdasarkan pilihan
-        const selectedMethod = metodeTugasSelect.value;
-        if (selectedMethod === 'link') {
-            linkTugasField.classList.remove('hidden');
-        } else if (selectedMethod === 'gdrive') {
-            gdriveTugasField.classList.remove('hidden');
-        } else if (selectedMethod === 'file') {
-            fileTugasField.classList.remove('hidden');
+        // Mengatur jam menjadi 23, menit menjadi 59, dan detik menjadi 00
+        now.setHours(23);
+        now.setMinutes(59);
+        now.setSeconds(0);
+    
+        // Tanggal tenggat waktu pengumpulan tugas
+        const deadline = now; 
+    
+        // Menghitung apakah tugas sudah lewat tenggat waktu
+        const isLate = new Date() > deadline;
+    
+        // Menyembunyikan form jika lewat tenggat waktu
+        if (isLate) {
+            document.getElementById('formPengumpulan').style.display = 'none';
+            document.getElementById('lateNotif').classList.remove('hidden');
+            document.getElementById('submitTugas').disabled = true;
+    
+            // Menyembunyikan pilihan metode pengumpulan tugas tapi tetap mempertahankan ukuran card
+            const metodeTugasField = document.getElementById('metodeTugas').parentElement;
+            metodeTugasField.style.visibility = 'hidden';  // Menyembunyikan dropdown, tapi tetap menjaga ukuran
+            metodeTugasField.style.opacity = '0';  // Pastikan dropdown tidak terlihat
+    
+            // Menampilkan card informasi kontak guru
+            document.getElementById('guruContactCard').classList.remove('hidden'); // Menampilkan card guru
         }
-    });
-
-    // Menangani pengiriman form
-    const formPengumpulan = document.getElementById('formPengumpulan');
-    const submitTugasButton = document.getElementById('submitTugas');
-    const notif = document.getElementById('notif');
-
-    formPengumpulan.addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        // Simulasi pengumpulan tugas berhasil
-        notif.classList.remove('hidden');
-
-        // Menyembunyikan tombol pengumpulan
-        submitTugasButton.style.display = 'none';
-    });
-</script>
+    
+        // Menangani perubahan metode pengumpulan
+        const metodeTugasSelect = document.getElementById('metodeTugas');
+        const linkTugasField = document.getElementById('linkTugasField');
+        const gdriveTugasField = document.getElementById('gdriveTugasField');
+        const fileTugasField = document.getElementById('fileTugasField');
+    
+        metodeTugasSelect.addEventListener('change', function () {
+            // Menyembunyikan semua input
+            linkTugasField.classList.add('hidden');
+            gdriveTugasField.classList.add('hidden');
+            fileTugasField.classList.add('hidden');
+    
+            // Menampilkan input berdasarkan pilihan
+            const selectedMethod = metodeTugasSelect.value;
+            if (selectedMethod === 'link') {
+                linkTugasField.classList.remove('hidden');
+            } else if (selectedMethod === 'gdrive') {
+                gdriveTugasField.classList.remove('hidden');
+            } else if (selectedMethod === 'file') {
+                fileTugasField.classList.remove('hidden');
+            }
+        });
+    
+        // Menangani pengiriman form
+        const formPengumpulan = document.getElementById('formPengumpulan');
+        const submitTugasButton = document.getElementById('submitTugas');
+        const notif = document.getElementById('notif');
+    
+        formPengumpulan.addEventListener('submit', function (event) {
+            event.preventDefault();
+    
+            // Simulasi pengumpulan tugas berhasil
+            notif.classList.remove('hidden');
+    
+            // Menyembunyikan tombol pengumpulan
+            submitTugasButton.style.display = 'none';
+        });
+    </script>
+    
 
 
 </body>
