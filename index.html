@@ -29,7 +29,7 @@
     <header class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-4">
         <div class="container mx-auto flex items-center justify-between">
             <div class="text-xl font-bold">
-                <a href="#" class="flex items-center space-x-2">
+                <a href="#" class="flex items-center space-x-2" id="logo">
                     <img src="https://via.placeholder.com/50" alt="Logo" class="w-12 h-12">
                     <span>EduPlatform</span>
                 </a>
@@ -168,46 +168,32 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gradient-to-r from-indigo-600 to-blue-800 text-white py-8">
-        <div class="container mx-auto text-center">
-            <p>&copy; 2024 EduPlatform. Semua hak dilindungi.</p>
-            <div class="space-x-4 mt-4">
-                <a href="#" class="text-white hover:text-gray-400">Tentang Kami</a>
-                <a href="#" class="text-white hover:text-gray-400">Kebijakan Privasi</a>
-                <a href="#" class="text-white hover:text-gray-400">Kontak</a>
+    <footer class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-10 rounded-t-3xl mx-auto px-4 lg:px-16">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between gap-8">
+            <div>
+                <img src="/img/logo.png" alt="Logo" class="w-60 h-15 mb-2 cursor-pointer" id="footerLogo">
+                <p class="text-gray-200">Jl. Ketintang Baru XII No.26, RT.004/RW.03</p>
+                <p class="text-gray-200">Kec. Gayungan, Surabaya, Jawa Timur 60231</p>
             </div>
-    
-            <div class="mt-4">
-                <a href="https://www.instagram.com" class="text-white hover:text-gray-400 mx-2" target="_blank">
-                    <i class="fab fa-instagram"></i> Instagram
-                </a>
-                <a href="https://wa.me/628123456789" class="text-white hover:text-gray-400 mx-2" target="_blank">
-                    <i class="fab fa-whatsapp"></i> WhatsApp
-                </a>
-            </div>
-    
-            <div class="mt-6">
-                <h3 class="text-xl font-semibold text-white">Kategori Kelas</h3>
-                <div class="flex justify-center space-x-6 mt-4">
-                    <!-- Kelas SD -->
-                    <a href="#" class="text-white hover:text-gray-400 flex items-center">
-                        <i class="fas fa-book-reader text-2xl mr-2"></i> Kelas SD
-                    </a>
-    
-                    <!-- Kelas SMP -->
-                    <a href="#" class="text-white hover:text-gray-400 flex items-center">
-                        <i class="fas fa-chalkboard-teacher text-2xl mr-2"></i> Kelas SMP
-                    </a>
-    
-                    <!-- Kelas SMA -->
-                    <a href="#" class="text-white hover:text-gray-400 flex items-center">
-                        <i class="fas fa-laptop-code text-2xl mr-2"></i> Kelas SMA
-                    </a>
-                </div>
+            <div class="text-left">
+                <h3 class="text-lg font-semibold mb-2">Media Sosial Kami</h3>
+                <ul class="space-y-2">
+                    <li><a href="javascript:void(0)" class="flex items-center gap-2 hover:underline">
+                        <i class="fab fa-instagram text-gray-200"></i><p class="text-gray-200">eduplatform</p>
+                    </a></li>
+                    <li><a href="javascript:void(0)" class="flex items-center gap-2 hover:underline">
+                        <i class="fab fa-facebook-f text-gray-200"></i><p class="text-gray-200">EduPlatform</p>
+                    </a></li>
+                    <li><a href="javascript:void(0)" class="flex items-center gap-2 hover:underline">
+                        <i class="fab fa-twitter text-gray-200"></i><p class="text-gray-200">@EduPlatform</p>
+                    </a></li>
+                </ul>
             </div>
         </div>
+        <div class="border-t border-gray-700 mt-8 pt-4 text-center">
+            <p class="text-gray-200">&copy; 2024 EduPlatform. Semua hak dilindungi.</p>
+        </div>
     </footer>
-    
 
     <!-- Script untuk Chart.js -->
     <script>
@@ -268,6 +254,18 @@
             const faqElement = document.getElementById(faqId);
             faqElement.classList.toggle('hidden');
         }
+    </script>
+
+    <!-- Script untuk Scroll ke Atas -->
+    <script>
+        // Scroll ke atas saat logo di header atau footer diklik
+        document.getElementById('logo').addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        document.getElementById('footerLogo').addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     </script>
 
 </body>
