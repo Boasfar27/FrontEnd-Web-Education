@@ -15,6 +15,9 @@
     
     <!-- Link ke Chart.js untuk grafik -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Tambahkan pustaka SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="bg-gray-100 text-gray-900 font-roboto">
@@ -25,7 +28,7 @@
             <h1 class="text-3xl font-semibold text-center text-white mb-6">EduPlatform</h1>
             <ul>
                 <li><a href="#kelas" class="flex items-center text-lg hover:text-blue-300 py-2"><i class="fas fa-chalkboard-teacher mr-3"></i>Manajemen Kelas</a></li>
-                <li><a href="#grafik" class="flex items-center text-lg hover:text-blue-300 py-2"><i class="fas fa-chart-bar mr-3"></i>Grafik Siswa</a></li> <!-- Added Grafik Siswa -->
+                <li><a href="#grafik" class="flex items-center text-lg hover:text-blue-300 py-2"><i class="fas fa-chart-bar mr-3"></i>Grafik Siswa</a></li>
                 <li><a href="#materi" class="flex items-center text-lg hover:text-blue-300 py-2"><i class="fas fa-book mr-3"></i>Materi</a></li>
                 <li><a href="#penugasan" class="flex items-center text-lg hover:text-blue-300 py-2"><i class="fas fa-tasks mr-3"></i>Penugasan</a></li>
                 <li><a href="#penilaian" class="flex items-center text-lg hover:text-blue-300 py-2"><i class="fas fa-clipboard-check mr-3"></i>Penilaian</a></li>
@@ -33,7 +36,7 @@
             </ul>
         </div>
 
-        <!-- Main Content (with padding on left side to avoid overlap with sidebar) -->
+        <!-- Main Content -->
         <div class="flex-1 p-6 lg:pl-72 pl-4">
             <div class="flex justify-between items-center mb-6">
                 <h2 class="text-3xl font-semibold">Selamat Datang, <span class="text-blue-600" id="guruName">[Nama Guru]</span></h2>
@@ -57,78 +60,122 @@
                 <h3 class="text-2xl font-semibold mb-4">Manajemen Kelas</h3>
                 <div class="bg-white p-6 rounded-lg shadow-lg">
                     <h4 class="text-xl font-medium mb-2">Kelola Kelas</h4>
-                    <form action="#" method="post">
+                    <form id="kelasForm" action="#" method="post">
                         <div class="mb-4">
                             <label for="kelasName" class="block text-sm font-medium text-gray-700">Nama Kelas</label>
                             <input type="text" id="kelasName" name="kelasName" class="mt-1 p-2 w-full border rounded-lg bg-gray-50" placeholder="Masukkan nama kelas" required>
                         </div>
                         <div class="mb-4">
-                            <label for="kelasSiswa" class="block text-sm font-medium text-gray-700">Tambah Siswa ke Kelas</label>
-                            <input type="text" id="kelasSiswa" name="kelasSiswa" class="mt-1 p-2 w-full border rounded-lg bg-gray-50" placeholder="Tambahkan nama siswa" required>
+                            <label for="kelasCode" class="block text-sm font-medium text-gray-700">Kode Kelas</label>
+                            <input type="text" id="kelasCode" name="kelasCode" class="mt-1 p-2 w-full border rounded-lg bg-gray-50" readonly>
                         </div>
-                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Buat Kelas</button>
+                        <div class="mb-4">
+                            <label for="kelasSiswa" class="block text-sm font-medium text-gray-700">Tambah Siswa ke Kelas</label>
+                            <input type="text" id="kelasSiswa" name="kelasSiswa" class="mt-1 p-2 w-full border rounded-lg bg-gray-50" placeholder="Tambahkan nama siswa">
+                        </div>
+                        <button type="button" id="addStudent" class="bg-green-500 text-white px-4 py-2 rounded-lg">Tambah Siswa</button>
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4">Buat Kelas</button>
                     </form>
+                    <ul id="studentList" class="mt-4">
+                        <!-- Daftar siswa akan ditambahkan di sini -->
+                    </ul>
                 </div>
             </section>
             
-            <!-- Grafik Aktivitas Siswa -->
+            <!-- Grafik Jumlah Siswa per Kelas -->
             <section id="grafik" class="mb-12">
-                <h3 class="text-2xl font-semibold mb-4">Grafik Aktivitas Siswa</h3>
+                <h3 class="text-2xl font-semibold mb-4">Grafik Jumlah Siswa per Kelas</h3>
                 <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <canvas id="studentActivityChart"></canvas>
+                    <canvas id="classStudentChart"></canvas>
                 </div>
             </section>
+
             <!-- Manajemen Materi Pembelajaran -->
             <section id="materi" class="mb-12">
                 <h3 class="text-2xl font-semibold mb-4">Manajemen Materi Pembelajaran</h3>
                 <div class="bg-white p-6 rounded-lg shadow-lg">
                     <h4 class="text-xl font-medium mb-2">Upload Materi</h4>
-                    <form action="#" method="post" enctype="multipart/form-data">
+                    <form id="materiForm" action="#" method="post" enctype="multipart/form-data">
+                        <div class="mb-4">
+                            <label for="kelasMateri" class="block text-sm font-medium text-gray-700">Pilih Kelas</label>
+                            <select id="kelasMateri" name="kelasMateri" class="mt-1 p-2 w-full border rounded-lg bg-gray-50" required>
+                                <option value="">Pilih Kelas</option>
+                                <option value="kelas1">Kelas 1</option>
+                                <option value="kelas2">Kelas 2</option>
+                                <!-- Tambahkan kelas lainnya di sini -->
+                            </select>
+                        </div>
                         <div class="mb-4">
                             <label for="materiFile" class="block text-sm font-medium text-gray-700">Pilih File Materi</label>
-                            <input type="file" id="materiFile" name="materiFile" class="mt-1 p-2 w-full border rounded-lg bg-gray-50" required>
+                            <input type="file" id="materiFile" name="materiFile" class="mt-1 p-2 w-full border rounded-lg bg-gray-50" accept=".pdf,.doc,.docx,application/vnd.google-apps.document" required>
                         </div>
-                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Upload Materi</button>
-                    </form>
-
-                    <!-- Upload Soal -->
-                    <h4 class="text-xl font-medium mt-6 mb-2">Upload Soal</h4>
-                    <form action="#" method="post" enctype="multipart/form-data">
                         <div class="mb-4">
-                            <label for="soalFile" class="block text-sm font-medium text-gray-700">Pilih File Soal</label>
-                            <input type="file" id="soalFile" name="soalFile" class="mt-1 p-2 w-full border rounded-lg bg-gray-50" required>
+                            <label for="materiLink" class="block text-sm font-medium text-gray-700">Link URL Materi (YouTube/GDrive)</label>
+                            <input type="url" id="materiLink" name="materiLink" class="mt-1 p-2 w-full border rounded-lg bg-gray-50" placeholder="Masukkan URL">
                         </div>
-                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Upload Soal</button>
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">
+                            <i class="fas fa-upload mr-2"></i>Upload Materi
+                        </button>
                     </form>
 
                     <!-- Upload Quiz -->
                     <h4 class="text-xl font-medium mt-6 mb-2">Upload Quiz</h4>
-                    <form action="#" method="post" enctype="multipart/form-data">
+                    <form id="quizForm" action="#" method="post" enctype="multipart/form-data">
                         <div class="mb-4">
-                            <label for="quizFile" class="block text-sm font-medium text-gray-700">Pilih File Quiz</label>
-                            <input type="file" id="quizFile" name="quizFile" class="mt-1 p-2 w-full border rounded-lg bg-gray-50" required>
+                            <label for="kelasQuiz" class="block text-sm font-medium text-gray-700">Pilih Kelas</label>
+                            <select id="kelasQuiz" name="kelasQuiz" class="mt-1 p-2 w-full border rounded-lg bg-gray-50" required>
+                                <option value="">Pilih Kelas</option>
+                                <option value="kelas1">Kelas 1</option>
+                                <option value="kelas2">Kelas 2</option>
+                                <!-- Tambahkan kelas lainnya di sini -->
+                            </select>
                         </div>
-                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Upload Quiz</button>
+                        <div class="mb-4">
+                            <label for="quizFile" class="block text-sm font-medium text-gray-700">Pilih File Quiz (Google Forms)</label>
+                            <input type="file" id="quizFile" name="quizFile" class="mt-1 p-2 w-full border rounded-lg bg-gray-50" accept="application/vnd.google-apps.form">
+                        </div>
+                        <div class="mb-4">
+                            <label for="quizLink" class="block text-sm font-medium text-gray-700">Link URL Quiz (Quizizz)</label>
+                            <input type="url" id="quizLink" name="quizLink" class="mt-1 p-2 w-full border rounded-lg bg-gray-50" placeholder="Masukkan URL">
+                        </div>
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">
+                            <i class="fas fa-upload mr-2"></i>Upload Quiz
+                        </button>
                     </form>
                 </div>
             </section>
-
 
             <!-- Penugasan -->
             <section id="penugasan" class="mb-12">
                 <h3 class="text-2xl font-semibold mb-4">Penugasan</h3>
                 <div class="bg-white p-6 rounded-lg shadow-lg">
                     <h4 class="text-xl font-medium mb-2">Buat Tugas</h4>
-                    <form action="#" method="post">
+                    <form id="penugasanForm" action="#" method="post" enctype="multipart/form-data">
                         <div class="mb-4">
-                            <label for="penugasanTitle" class="block text-sm font-medium text-gray-700">Judul Tugas</label>
-                            <input type="text" id="penugasanTitle" name="penugasanTitle" class="mt-1 p-2 w-full border rounded-lg bg-gray-50" placeholder="Masukkan judul tugas" required>
+                            <label for="kelas" class="block text-sm font-medium text-gray-700">Pilih Kelas</label>
+                            <select id="kelas" name="kelas" class="mt-1 p-2 w-full border rounded-lg bg-gray-50">
+                                <option value="kelas1">Kelas 1</option>
+                                <option value="kelas2">Kelas 2</option>
+                                <option value="kelas3">Kelas 3</option>
+                                <!-- Tambahkan opsi kelas lainnya sesuai kebutuhan -->
+                            </select>
                         </div>
                         <div class="mb-4">
-                            <label for="penugasanDesc" class="block text-sm font-medium text-gray-700">Deskripsi Tugas</label>
-                            <textarea id="penugasanDesc" name="penugasanDesc" class="mt-1 p-2 w-full border rounded-lg bg-gray-50" rows="4" required></textarea>
+                            <label for="penugasanTitle" class="block text-sm font-medium text-gray-700">Judul Tugas <span class="text-red-500">*</span></label>
+                            <input type="text" id="penugasanTitle" name="penugasanTitle" class="mt-1 p-2 w-full border rounded-lg bg-gray-50" placeholder="Masukkan judul tugas" required aria-label="Judul Tugas">
                         </div>
-                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Buat Tugas</button>
+                        <div class="mb-4">
+                            <label for="penugasanDesc" class="block text-sm font-medium text-gray-700">Deskripsi Tugas <span class="text-red-500">*</span></label>
+                            <textarea id="penugasanDesc" name="penugasanDesc" class="mt-1 p-2 w-full border rounded-lg bg-gray-50" rows="4" required aria-label="Deskripsi Tugas"></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label for="fileUpload" class="block text-sm font-medium text-gray-700">Unggah Tugas <span class="text-red-500">*</span></label>
+                            <input type="file" id="fileUpload" name="fileUpload" class="mt-1 p-2 w-full border rounded-lg bg-gray-50" accept=".pdf,.doc,.docx,application/vnd.google-apps.document" required>
+                            <small class="text-gray-500">Format yang diperbolehkan: PDF, Word, Google Drive</small>
+                        </div>
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300">
+                            <i class="fas fa-upload mr-2"></i>Buat Tugas
+                        </button>
                     </form>
                 </div>
             </section>
@@ -138,12 +185,29 @@
                 <h3 class="text-2xl font-semibold mb-4">Penilaian</h3>
                 <div class="bg-white p-6 rounded-lg shadow-lg">
                     <h4 class="text-xl font-medium mb-2">Penilaian Tugas</h4>
-                    <form action="#" method="post">
+                    <form id="penilaianForm" action="#" method="post">
+                        <div class="mb-4">
+                            <label for="kelas" class="block text-sm font-medium text-gray-700">Pilih Kelas</label>
+                            <select id="kelas" name="kelas" class="mt-1 p-2 w-full border rounded-lg bg-gray-50" required>
+                                <option value="">Pilih Kelas</option>
+                                <option value="kelas1">Kelas 1</option>
+                                <option value="kelas2">Kelas 2</option>
+                                <!-- Tambahkan opsi kelas lainnya sesuai kebutuhan -->
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label for="tugas" class="block text-sm font-medium text-gray-700">Pilih Tugas</label>
+                            <select id="tugas" name="tugas" class="mt-1 p-2 w-full border rounded-lg bg-gray-50" required>
+                                <option value="">Pilih Tugas</option>
+                                <option value="tugas1">Tugas 1</option>
+                                <option value="tugas2">Tugas 2</option>
+                                <!-- Tambahkan opsi tugas lainnya sesuai kebutuhan -->
+                            </select>
+                        </div>
                         <div class="mb-4">
                             <label for="penilaianSiswa" class="block text-sm font-medium text-gray-700">Pilih Siswa</label>
                             <select id="penilaianSiswa" name="penilaianSiswa" class="mt-1 p-2 w-full border rounded-lg bg-gray-50" required>
-                                <option value="siswa1">Andi Pratama</option>
-                                <option value="siswa2">Dita Ayu Wulandari</option>
+                                <!-- Nama siswa akan dimuat berdasarkan pilihan kelas dan tugas -->
                             </select>
                         </div>
                         <div class="mb-4">
@@ -163,36 +227,147 @@
             document.getElementById('dropdownMenu').classList.toggle('hidden');
         });
 
-        // Grafik Aktivitas Siswa (menggunakan Chart.js)
-        const ctx = document.getElementById('studentActivityChart').getContext('2d');
-        const studentActivityChart = new Chart(ctx, {
+        // Grafik Jumlah Siswa per Kelas
+        const ctx = document.getElementById('classStudentChart').getContext('2d');
+        const classStudentChart = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: ['Kelas 1', 'Kelas 2', 'Kelas 3', 'Kelas 4', 'Kelas 5', 'Kelas 6'],
                 datasets: [{
-                    label: 'Aktivitas Siswa',
-                    data: [5, 12, 8, 3, 15, 30], // Data aktivitas siswa
-                    backgroundColor: 'rgba(99, 123, 255, 0.6)',
-                    borderColor: 'rgba(99, 123, 255, 1)',
+                    label: 'Jumlah Siswa',
+                    data: [30, 25, 28, 32, 27, 40], // Contoh data jumlah siswa per kelas
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
                     borderWidth: 1
                 }]
             },
             options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    },
-                    tooltip: {
-                        enabled: true
-                    }
-                },
                 scales: {
-                    y: { 
+                    y: {
                         beginAtZero: true
                     }
                 }
             }
+        });
+
+        document.getElementById('kelasName').addEventListener('input', function() {
+            const kelasName = this.value;
+            const kelasCode = kelasName ? kelasName.substring(0, 3).toUpperCase() + Math.floor(Math.random() * 1000) : '';
+            document.getElementById('kelasCode').value = kelasCode;
+        });
+
+        document.getElementById('addStudent').addEventListener('click', function() {
+            const studentName = document.getElementById('kelasSiswa').value.trim();
+            if (studentName) {
+                const studentList = document.getElementById('studentList');
+                const listItem = document.createElement('li');
+                listItem.className = 'flex justify-between items-center bg-gray-100 p-2 rounded-lg mb-2';
+                listItem.innerHTML = `
+                    <span>${studentName}</span>
+                    <button class="bg-red-500 text-white px-2 py-1 rounded-lg removeStudent">Hapus</button>
+                `;
+                studentList.appendChild(listItem);
+                document.getElementById('kelasSiswa').value = '';
+            }
+        });
+
+        document.getElementById('studentList').addEventListener('click', function(e) {
+            if (e.target.classList.contains('removeStudent')) {
+                e.target.parentElement.remove();
+            }
+        });
+
+        document.getElementById('kelas').addEventListener('change', function() {
+            // Logika untuk memuat tugas berdasarkan kelas yang dipilih
+            // Misalnya, Anda bisa menggunakan AJAX untuk mendapatkan data dari server
+        });
+
+        document.getElementById('tugas').addEventListener('change', function() {
+            // Logika untuk memuat nama siswa berdasarkan kelas dan tugas yang dipilih
+            const siswaSelect = document.getElementById('penilaianSiswa');
+            siswaSelect.innerHTML = ''; // Kosongkan opsi sebelumnya
+
+            // Contoh data siswa, ini seharusnya diambil dari server
+            const siswaData = {
+                'kelas1': {
+                    'tugas1': ['Andi Pratama', 'Dita Ayu Wulandari'],
+                    'tugas2': ['Budi Santoso', 'Citra Dewi']
+                },
+                'kelas2': {
+                    'tugas1': ['Eko Saputra', 'Fina Lestari'],
+                    'tugas2': ['Gilang Ramadhan', 'Hana Sari']
+                }
+            };
+
+            const kelas = document.getElementById('kelas').value;
+            const tugas = this.value;
+
+            if (siswaData[kelas] && siswaData[kelas][tugas]) {
+                siswaData[kelas][tugas].forEach(function(siswa) {
+                    const option = document.createElement('option');
+                    option.value = siswa;
+                    option.textContent = siswa;
+                    siswaSelect.appendChild(option);
+                });
+            }
+        });
+
+        // Fungsi untuk menampilkan SweetAlert
+        function showSuccessAlert(message) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: message,
+                confirmButtonText: 'OK'
+            });
+        }
+
+        // Tambahkan event listener untuk setiap form yang relevan
+        document.getElementById('kelasForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Logika untuk membuat kelas
+            showSuccessAlert('Kelas berhasil dibuat!');
+            this.reset();
+        });
+
+        document.getElementById('materiForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Logika untuk mengunggah materi
+            showSuccessAlert('Materi berhasil diunggah!');
+            this.reset();
+        });
+
+        document.getElementById('quizForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Logika untuk mengunggah quiz
+            showSuccessAlert('Quiz berhasil diunggah!');
+            this.reset();
+        });
+
+        document.getElementById('penugasanForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Logika untuk membuat tugas
+            showSuccessAlert('Tugas berhasil dibuat!');
+            this.reset();
+        });
+
+        document.getElementById('penilaianForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Logika untuk memberikan nilai
+            showSuccessAlert('Nilai berhasil diberikan!');
+            this.reset();
         });
     </script>
 
